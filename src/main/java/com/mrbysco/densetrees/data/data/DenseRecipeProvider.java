@@ -37,8 +37,8 @@ public class DenseRecipeProvider extends RecipeProvider {
 		logsFromDenseLog(consumer, Blocks.JUNGLE_LOG, DenseRegistry.DENSE_JUNGLE_LOG);
 		logsFromDenseLog(consumer, Blocks.OAK_LOG, DenseRegistry.DENSE_OAK_LOG);
 		logsFromDenseLog(consumer, Blocks.SPRUCE_LOG, DenseRegistry.DENSE_SPRUCE_LOG);
-		planksFromDenseLog(consumer, Blocks.CRIMSON_STEM, DenseRegistry.DENSE_CRIMSON_STEM);
-		planksFromDenseLog(consumer, Blocks.WARPED_STEM, DenseRegistry.DENSE_WARPED_STEM);
+		stemsFromDenseLog(consumer, Blocks.CRIMSON_STEM, DenseRegistry.DENSE_CRIMSON_STEM);
+		stemsFromDenseLog(consumer, Blocks.WARPED_STEM, DenseRegistry.DENSE_WARPED_STEM);
 	}
 
 	protected static void planksFromDenseLog(Consumer<FinishedRecipe> recipeConsumer, ItemLike planks, RegistryObject<Block> log) {
@@ -52,6 +52,13 @@ public class DenseRecipeProvider extends RecipeProvider {
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
 				.save(recipeConsumer, new ResourceLocation(DenseTrees.MOD_ID, "logs_from_" + denseLog.getId().getPath()));
+	}
+
+	protected static void stemsFromDenseLog(Consumer<FinishedRecipe> recipeConsumer, ItemLike log, RegistryObject<Block> denseLog) {
+		ShapedRecipeBuilder.shaped(log, 64)
+				.pattern("##").pattern("##")
+				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
+				.save(recipeConsumer, new ResourceLocation(DenseTrees.MOD_ID, "stems_from_" + denseLog.getId().getPath()));
 	}
 
 }
