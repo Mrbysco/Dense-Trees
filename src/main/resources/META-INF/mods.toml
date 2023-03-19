@@ -1,0 +1,20 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+issueTrackerURL="https://github.com/mrbysco/dense-trees/issues"
+license="MIT"
+
+[[mods]]
+modId="densetrees"
+version="${file.jarVersion}"
+displayName="Dense Trees"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/dense-trees"
+authors="Mrbysco"
+description='''
+Adds dense versions of vanilla trees that craft into 64 planks instead of 4.
+'''
+[[dependencies.densetrees]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.18.2,1.19)"
+ordering="NONE"
+side="BOTH"

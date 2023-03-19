@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "densetrees:dense_spruce_log"
+    }
+  ],
+  "result": {
+    "item": "minecraft:spruce_planks",
+    "count": 64
+  }
+}

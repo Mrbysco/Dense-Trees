@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "densetrees:dense_acacia_log"
+    }
+  ],
+  "result": {
+    "item": "minecraft:acacia_planks",
+    "count": 64
+  }
+}

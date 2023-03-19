@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "densetrees:dense_oak_log",
+    "densetrees:dense_spruce_log",
+    "densetrees:dense_birch_log",
+    "densetrees:dense_jungle_log",
+    "densetrees:dense_acacia_log",
+    "densetrees:dense_dark_oak_log"
+  ]
+}
