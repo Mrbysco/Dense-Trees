@@ -12,6 +12,7 @@ authors="Mrbysco"
 description='''
 Adds dense versions of vanilla trees that craft into 64 planks instead of 4.
 '''
+credits="TelephaticGrunt for the idea"
 [[dependencies.densetrees]]
 modId="minecraft"
 mandatory=true
