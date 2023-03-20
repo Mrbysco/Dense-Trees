@@ -1,0 +1,6 @@
+{
+  "type": "densetrees:add_dense_variation",
+  "biomes": "#minecraft:is_overworld",
+  "dense": "densetrees:dense_dark_forest_vegetation",
+  "original": "minecraft:dark_forest_vegetation"
+}

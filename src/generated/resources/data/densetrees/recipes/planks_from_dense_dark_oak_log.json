@@ -7,7 +7,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:dark_oak_planks",
-    "count": 64
+    "count": 64,
+    "item": "minecraft:dark_oak_planks"
   }
 }

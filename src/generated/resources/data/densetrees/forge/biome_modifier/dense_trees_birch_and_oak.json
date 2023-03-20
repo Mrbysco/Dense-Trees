@@ -1,0 +1,6 @@
+{
+  "type": "densetrees:add_dense_variation",
+  "biomes": "#minecraft:is_overworld",
+  "dense": "densetrees:dense_trees_birch_and_oak",
+  "original": "minecraft:trees_birch_and_oak"
+}

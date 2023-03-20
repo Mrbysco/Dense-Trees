@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "##",
-    "##"
-  ],
   "key": {
     "#": {
       "item": "densetrees:dense_spruce_log"
     }
   },
+  "pattern": [
+    "##",
+    "##"
+  ],
   "result": {
-    "item": "minecraft:spruce_log",
-    "count": 64
+    "count": 64,
+    "item": "minecraft:spruce_log"
   }
 }

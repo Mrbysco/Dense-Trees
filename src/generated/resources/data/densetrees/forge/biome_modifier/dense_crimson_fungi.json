@@ -1,0 +1,6 @@
+{
+  "type": "densetrees:add_dense_variation",
+  "biomes": "#minecraft:is_nether",
+  "dense": "densetrees:dense_crimson_fungi",
+  "original": "minecraft:crimson_fungi"
+}

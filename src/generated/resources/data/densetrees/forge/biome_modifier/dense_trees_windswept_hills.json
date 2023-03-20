@@ -1,0 +1,6 @@
+{
+  "type": "densetrees:add_dense_variation",
+  "biomes": "#minecraft:is_overworld",
+  "dense": "densetrees:dense_trees_windswept_hills",
+  "original": "minecraft:trees_windswept_hills"
+}

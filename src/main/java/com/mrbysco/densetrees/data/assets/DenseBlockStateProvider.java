@@ -18,13 +18,13 @@ public class DenseBlockStateProvider extends BlockStateProvider {
 	@Override
 	protected void registerStatesAndModels() {
 		for (RegistryObject<Block> registryObject : DenseRegistry.BLOCKS.getEntries()) {
-			if (registryObject.get() instanceof RotatedPillarBlock rotatedPillarBlock)
-				denseLogBlock(rotatedPillarBlock);
+			if (registryObject.get() instanceof RotatedPillarBlock)
+				denseLogBlock(registryObject);
 		}
 	}
 
-	public void denseLogBlock(RotatedPillarBlock block) {
-		String vanillaPath = "block/" + block.getRegistryName().getPath().replace("dense_", "");
-		axisBlock(block, new ResourceLocation(vanillaPath), new ResourceLocation(vanillaPath + "_top"));
+	public void denseLogBlock(RegistryObject<Block> block) {
+		String vanillaPath = "block/" + block.getId().getPath().replace("dense_", "");
+		axisBlock((RotatedPillarBlock) block.get(), new ResourceLocation(vanillaPath), new ResourceLocation(vanillaPath + "_top"));
 	}
 }

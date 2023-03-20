@@ -1,0 +1,6 @@
+{
+  "type": "densetrees:add_dense_variation",
+  "biomes": "#minecraft:is_overworld",
+  "dense": "densetrees:dense_trees_flower_forest",
+  "original": "minecraft:trees_flower_forest"
+}
