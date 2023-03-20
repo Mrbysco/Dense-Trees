@@ -24,6 +24,7 @@ public class DenseWorldGen {
 		List<Holder<PlacedFeature>> featureList = builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
 
 		addDenseVariation(biomeKey, builder, featureList, VegetationPlacements.TREES_FLOWER_FOREST, DenseVegetationPlacements.DENSE_TREES_FLOWER_FOREST.getHolder().orElseThrow());
+		addDenseVariation(biomeKey, builder, featureList, VegetationPlacements.DARK_FOREST_VEGETATION, DenseVegetationPlacements.DENSE_DARK_FOREST_VEGETATION.getHolder().orElseThrow());
 		addDenseVariation(biomeKey, builder, featureList, VegetationPlacements.TREES_MEADOW, DenseVegetationPlacements.DENSE_TREES_MEADOW.getHolder().orElseThrow());
 		addDenseVariation(biomeKey, builder, featureList, VegetationPlacements.TREES_TAIGA, DenseVegetationPlacements.DENSE_TREES_TAIGA.getHolder().orElseThrow());
 		addDenseVariation(biomeKey, builder, featureList, VegetationPlacements.TREES_GROVE, DenseVegetationPlacements.DENSE_TREES_GROVE.getHolder().orElseThrow());

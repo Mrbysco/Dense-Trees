@@ -2,6 +2,7 @@ package com.mrbysco.densetrees.world;
 
 import com.mrbysco.densetrees.DenseTrees;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -15,6 +16,7 @@ import java.util.List;
 public class DenseVegetationFeatures {
 	public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DenseTrees.MOD_ID);
 
+	public static final RegistryObject<ConfiguredFeature<?, ?>> DENSE_DARK_FOREST_VEGETATION = CONFIGURED_FEATURES.register("dense_dark_forest_vegetation", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(PlacementUtils.inlinePlaced(TreeFeatures.HUGE_BROWN_MUSHROOM), 0.025F), new WeightedPlacedFeature(PlacementUtils.inlinePlaced(TreeFeatures.HUGE_RED_MUSHROOM), 0.05F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_DARK_OAK_CHECKED.getHolder().orElseThrow(), 0.6666667F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_BIRCH_CHECKED.getHolder().orElseThrow(), 0.2F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_FANCY_OAK_CHECKED.getHolder().orElseThrow(), 0.1F)), DenseTreePlacements.DENSE_OAK_CHECKED.getHolder().orElseThrow())));
 	public static final RegistryObject<ConfiguredFeature<?, ?>> DENSE_TREES_FLOWER_FOREST = CONFIGURED_FEATURES.register("dense_trees_flower_forest", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(DenseTreePlacements.DENSE_BIRCH_BEES_002.getHolder().orElseThrow(), 0.2F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_FANCY_OAK_BEES_002.getHolder().orElseThrow(), 0.1F)), DenseTreePlacements.DENSE_OAK_BEES_002.getHolder().orElseThrow())));
 	public static final RegistryObject<ConfiguredFeature<?, ?>> DENSE_MEADOW_TREES = CONFIGURED_FEATURES.register("dense_meadow_trees", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(DenseTreePlacements.DENSE_FANCY_OAK_BEES.getHolder().orElseThrow(), 0.5F)), DenseTreePlacements.DENSE_SUPER_BIRCH_BEES.getHolder().orElseThrow())));
 	public static final RegistryObject<ConfiguredFeature<?, ?>> DENSE_TREES_TAIGA = CONFIGURED_FEATURES.register("dense_trees_taiga", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(DenseTreePlacements.DENSE_PINE_CHECKED.getHolder().orElseThrow(), 0.33333334F)), DenseTreePlacements.DENSE_SPRUCE_CHECKED.getHolder().orElseThrow())));
