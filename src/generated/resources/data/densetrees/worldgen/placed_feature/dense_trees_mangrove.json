@@ -1,28 +1,16 @@
 {
-  "feature": "densetrees:dense_swamp_oak",
+  "feature": "densetrees:dense_mangrove_vegetation",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "data": 2,
-            "weight": 9
-          },
-          {
-            "data": 3,
-            "weight": 1
-          }
-        ]
-      }
+      "count": 25
     },
     {
       "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:surface_water_depth_filter",
-      "max_water_depth": 2
+      "max_water_depth": 5
     },
     {
       "type": "minecraft:heightmap",
@@ -40,9 +28,12 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:oak_sapling",
+          "Name": "minecraft:mangrove_propagule",
           "Properties": {
-            "stage": "0"
+            "age": "0",
+            "hanging": "false",
+            "stage": "0",
+            "waterlogged": "false"
           }
         }
       }

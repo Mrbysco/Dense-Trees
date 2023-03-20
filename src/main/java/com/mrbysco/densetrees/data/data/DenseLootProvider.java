@@ -40,7 +40,7 @@ public class DenseLootProvider extends LootTableProvider {
 		@Override
 		protected void addTables() {
 			for (RegistryObject<Block> registryObject : DenseRegistry.BLOCKS.getEntries()) {
-				if (registryObject.get() instanceof RotatedPillarBlock rotatedPillarBlock)
+				if (registryObject.get() instanceof RotatedPillarBlock)
 					this.dropSelf(registryObject.get());
 			}
 

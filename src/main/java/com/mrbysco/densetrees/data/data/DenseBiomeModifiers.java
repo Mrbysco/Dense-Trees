@@ -41,15 +41,15 @@ public class DenseBiomeModifiers {
 	public static Map<ResourceLocation, PlacedFeature> getPlacedFeatures(RegistryOps<JsonElement> ops) {
 		Map<ResourceLocation, PlacedFeature> map = Maps.newHashMap();
 
-		generatePlacedFeature(ops, map, "dense_dark_forest_vegetation", DenseVegetationFeatures.DENSE_DARK_FOREST_VEGETATION.getHolder().orElseThrow(), CountPlacement.of(16), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
-		generatePlacedFeature(ops, map, "dense_trees_plains", DenseVegetationFeatures.DENSE_TREES_PLAINS.getHolder().orElseThrow(), PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
+		generatePlacedFeature(ops, map, "dense_dark_forest_vegetation", DenseVegetationFeatures.DENSE_DARK_FOREST_VEGETATION.getHolder().orElseThrow(), CountPlacement.of(16), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RarityFilter.onAverageOnceEvery(10), BiomeFilter.biome());
+		generatePlacedFeature(ops, map, "dense_trees_plains", DenseVegetationFeatures.DENSE_TREES_PLAINS.getHolder().orElseThrow(), PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RarityFilter.onAverageOnceEvery(10), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
 		generatePlacedFeature(ops, map, "dense_trees_flower_forest", DenseVegetationFeatures.DENSE_TREES_FLOWER_FOREST.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(6, 0.1F, 1)));
 		generatePlacedFeature(ops, map, "dense_trees_meadow", DenseVegetationFeatures.DENSE_MEADOW_TREES.getHolder().orElseThrow(), denseTreePlacement(RarityFilter.onAverageOnceEvery(100)));
 		generatePlacedFeature(ops, map, "dense_trees_taiga", DenseVegetationFeatures.DENSE_TREES_TAIGA.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 		generatePlacedFeature(ops, map, "dense_trees_grove", DenseVegetationFeatures.DENSE_TREES_GROVE.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 		generatePlacedFeature(ops, map, "dense_trees_badlands", DenseTreeFeatures.DENSE_OAK.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(5, 0.1F, 1), Blocks.OAK_SAPLING));
 		generatePlacedFeature(ops, map, "dense_trees_snowy", DenseTreeFeatures.DENSE_SPRUCE.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(0, 0.1F, 1), Blocks.SPRUCE_SAPLING));
-		generatePlacedFeature(ops, map, "dense_trees_swamp", DenseTreeFeatures.DENSE_SWAMP_OAK.getHolder().orElseThrow(), PlacementUtils.countExtra(2, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(2), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)));
+		generatePlacedFeature(ops, map, "dense_trees_swamp", DenseTreeFeatures.DENSE_SWAMP_OAK.getHolder().orElseThrow(), PlacementUtils.countExtra(2, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(2), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RarityFilter.onAverageOnceEvery(10), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)));
 		generatePlacedFeature(ops, map, "dense_trees_windswept_savanna", DenseVegetationFeatures.DENSE_TREES_SAVANNA.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
 		generatePlacedFeature(ops, map, "dense_trees_savanna", DenseVegetationFeatures.DENSE_TREES_SAVANNA.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(1, 0.1F, 1)));
 		generatePlacedFeature(ops, map, "dense_birch_tall", DenseVegetationFeatures.DENSE_BIRCH_TALL.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
@@ -62,6 +62,7 @@ public class DenseBiomeModifiers {
 		generatePlacedFeature(ops, map, "dense_trees_old_growth_spruce_taiga", DenseVegetationFeatures.DENSE_TREES_OLD_GROWTH_SPRUCE_TAIGA.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 		generatePlacedFeature(ops, map, "dense_trees_old_growth_pine_taiga", DenseVegetationFeatures.DENSE_TREES_OLD_GROWTH_PINE_TAIGA.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 		generatePlacedFeature(ops, map, "dense_trees_jungle", DenseVegetationFeatures.DENSE_TREES_JUNGLE.getHolder().orElseThrow(), denseTreePlacement(PlacementUtils.countExtra(50, 0.1F, 1)));
+		generatePlacedFeature(ops, map, "dense_trees_mangrove", DenseVegetationFeatures.DENSE_MANGROVE_VEGETATION.getHolder().orElseThrow(), CountPlacement.of(25), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(5), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RarityFilter.onAverageOnceEvery(10), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.MANGROVE_PROPAGULE.defaultBlockState(), BlockPos.ZERO)));
 		generatePlacedFeature(ops, map, "dense_crimson_fungi", DenseTreeFeatures.DENSE_CRIMSON_FUNGUS.getHolder().orElseThrow(), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(5));
 		generatePlacedFeature(ops, map, "dense_warped_fungi", DenseTreeFeatures.DENSE_WARPED_FUNGUS.getHolder().orElseThrow(), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(5));
 
@@ -122,6 +123,7 @@ public class DenseBiomeModifiers {
 		addDenseVariation(ops, map, overworld, "trees_old_growth_spruce_taiga", "dense_trees_old_growth_spruce_taiga");
 		addDenseVariation(ops, map, overworld, "trees_old_growth_pine_taiga", "dense_trees_old_growth_pine_taiga");
 		addDenseVariation(ops, map, overworld, "trees_jungle", "dense_trees_jungle");
+		addDenseVariation(ops, map, overworld, "trees_mangrove", "dense_trees_mangrove");
 		final HolderSet.Named<Biome> nether = new HolderSet.Named<>(ops.registry(Registry.BIOME_REGISTRY).get(), BiomeTags.IS_NETHER);
 		addDenseVariation(ops, map, nether, "crimson_fungi", "dense_crimson_fungi");
 		addDenseVariation(ops, map, nether, "warped_fungi", "dense_warped_fungi");

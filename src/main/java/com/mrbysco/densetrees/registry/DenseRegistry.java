@@ -25,6 +25,7 @@ public class DenseRegistry {
 	public static final RegistryObject<Block> DENSE_JUNGLE_LOG = BLOCKS.register("dense_jungle_log", () -> denseLog(MaterialColor.DIRT, MaterialColor.PODZOL));
 	public static final RegistryObject<Block> DENSE_ACACIA_LOG = BLOCKS.register("dense_acacia_log", () -> denseLog(MaterialColor.COLOR_ORANGE, MaterialColor.STONE));
 	public static final RegistryObject<Block> DENSE_DARK_OAK_LOG = BLOCKS.register("dense_dark_oak_log", () -> denseLog(MaterialColor.COLOR_BROWN, MaterialColor.COLOR_BROWN));
+	public static final RegistryObject<Block> DENSE_MANGROVE_LOG = BLOCKS.register("dense_mangrove_log", () -> denseLog(MaterialColor.COLOR_RED, MaterialColor.PODZOL));
 	public static final RegistryObject<Block> DENSE_CRIMSON_STEM = BLOCKS.register("dense_crimson_stem", () -> denseNetherStem(MaterialColor.CRIMSON_STEM));
 	public static final RegistryObject<Block> DENSE_WARPED_STEM = BLOCKS.register("dense_warped_stem", () -> denseNetherStem(MaterialColor.CRIMSON_STEM));
 
@@ -34,6 +35,7 @@ public class DenseRegistry {
 	public static final RegistryObject<Item> DENSE_JUNGLE_LOG_ITEM = ITEMS.register("dense_jungle_log", () -> new BlockItem(DENSE_JUNGLE_LOG.get(), itemProperties()));
 	public static final RegistryObject<Item> DENSE_ACACIA_LOG_ITEM = ITEMS.register("dense_acacia_log", () -> new BlockItem(DENSE_ACACIA_LOG.get(), itemProperties()));
 	public static final RegistryObject<Item> DENSE_DARK_OAK_LOG_ITEM = ITEMS.register("dense_dark_oak_log", () -> new BlockItem(DENSE_DARK_OAK_LOG.get(), itemProperties()));
+	public static final RegistryObject<Item> DENSE_MANGROVE_LOG_ITEM = ITEMS.register("dense_mangrove_log", () -> new BlockItem(DENSE_MANGROVE_LOG.get(), itemProperties()));
 	public static final RegistryObject<Item> DENSE_CRIMSON_STEM_ITEM = ITEMS.register("dense_crimson_stem", () -> new BlockItem(DENSE_CRIMSON_STEM.get(), itemProperties()));
 	public static final RegistryObject<Item> DENSE_WARPED_STEM_ITEM = ITEMS.register("dense_warped_stem", () -> new BlockItem(DENSE_WARPED_STEM.get(), itemProperties()));
 

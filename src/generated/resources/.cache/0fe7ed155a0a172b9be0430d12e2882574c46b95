@@ -1,4 +1,4 @@
-// 1.19.2	2023-03-20T18:45:11.406608	forge/biome_modifier generator for densetrees
+// 1.19.2	2023-03-20T19:43:04.8187144	forge/biome_modifier generator for densetrees
 11aae8258f43abcdd619aaf4e8a960224a02e776 data/densetrees/forge/biome_modifier/dense_birch_tall.json
 faa1733d917fd3eee53f15bb30589a43d6522e6b data/densetrees/forge/biome_modifier/dense_crimson_fungi.json
 76e9351dfb9fdc2a068fbce1c0249f434dc56713 data/densetrees/forge/biome_modifier/dense_dark_forest_vegetation.json
@@ -8,6 +8,7 @@ c4e66446a45f5a23de88d8560ce17708762adcae data/densetrees/forge/biome_modifier/de
 ab689e6070f89bb7bed01c495e297e56c838a954 data/densetrees/forge/biome_modifier/dense_trees_flower_forest.json
 1a4d2fdaec53bfc7539066eb654bdcf5a0dda5df data/densetrees/forge/biome_modifier/dense_trees_grove.json
 78cdf7c8d52fa01b9f3eff76a7e83bb9a4def57b data/densetrees/forge/biome_modifier/dense_trees_jungle.json
+9fca0cf22b8ff713592f9597c7446f13b604b806 data/densetrees/forge/biome_modifier/dense_trees_mangrove.json
 c08079ffdd1ef563600dafe18237beb3e1fccdd9 data/densetrees/forge/biome_modifier/dense_trees_meadow.json
 504da0261a4336f522042f9c8793525c25f569b0 data/densetrees/forge/biome_modifier/dense_trees_old_growth_pine_taiga.json
 7cc9dfb6f369cb388ba94ef9b8a28f7b731628fb data/densetrees/forge/biome_modifier/dense_trees_old_growth_spruce_taiga.json

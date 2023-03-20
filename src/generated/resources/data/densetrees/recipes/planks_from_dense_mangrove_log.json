@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "densetrees:dense_mangrove_log"
+    }
+  ],
+  "result": {
+    "count": 64,
+    "item": "minecraft:mangrove_planks"
+  }
+}

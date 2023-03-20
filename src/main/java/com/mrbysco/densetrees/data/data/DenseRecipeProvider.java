@@ -28,6 +28,7 @@ public class DenseRecipeProvider extends RecipeProvider {
 		planksFromDenseLog(consumer, Blocks.JUNGLE_PLANKS, DenseRegistry.DENSE_JUNGLE_LOG);
 		planksFromDenseLog(consumer, Blocks.OAK_PLANKS, DenseRegistry.DENSE_OAK_LOG);
 		planksFromDenseLog(consumer, Blocks.SPRUCE_PLANKS, DenseRegistry.DENSE_SPRUCE_LOG);
+		planksFromDenseLog(consumer, Blocks.MANGROVE_PLANKS, DenseRegistry.DENSE_MANGROVE_LOG);
 		planksFromDenseLog(consumer, Blocks.CRIMSON_PLANKS, DenseRegistry.DENSE_CRIMSON_STEM);
 		planksFromDenseLog(consumer, Blocks.WARPED_PLANKS, DenseRegistry.DENSE_WARPED_STEM);
 
@@ -37,6 +38,7 @@ public class DenseRecipeProvider extends RecipeProvider {
 		logsFromDenseLog(consumer, Blocks.JUNGLE_LOG, DenseRegistry.DENSE_JUNGLE_LOG);
 		logsFromDenseLog(consumer, Blocks.OAK_LOG, DenseRegistry.DENSE_OAK_LOG);
 		logsFromDenseLog(consumer, Blocks.SPRUCE_LOG, DenseRegistry.DENSE_SPRUCE_LOG);
+		logsFromDenseLog(consumer, Blocks.MANGROVE_LOG, DenseRegistry.DENSE_MANGROVE_LOG);
 		stemsFromDenseLog(consumer, Blocks.CRIMSON_STEM, DenseRegistry.DENSE_CRIMSON_STEM);
 		stemsFromDenseLog(consumer, Blocks.WARPED_STEM, DenseRegistry.DENSE_WARPED_STEM);
 	}

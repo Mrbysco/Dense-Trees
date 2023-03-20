@@ -1,12 +1,9 @@
 package com.mrbysco.densetrees.world;
 
 import com.mrbysco.densetrees.DenseTrees;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
@@ -34,5 +31,6 @@ public class DenseVegetationFeatures {
 	public static final RegistryObject<ConfiguredFeature<?, ?>> DENSE_TREES_OLD_GROWTH_SPRUCE_TAIGA = CONFIGURED_FEATURES.register("dense_trees_old_growth_spruce_taiga", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(DenseTreePlacements.DENSE_MEGA_SPRUCE_CHECKED.getHolder().orElseThrow(), 0.33333334F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_PINE_CHECKED.getHolder().orElseThrow(), 0.33333334F)), DenseTreePlacements.DENSE_SPRUCE_CHECKED.getHolder().orElseThrow())));
 	public static final RegistryObject<ConfiguredFeature<?, ?>> DENSE_TREES_OLD_GROWTH_PINE_TAIGA = CONFIGURED_FEATURES.register("dense_trees_old_growth_pine_taiga", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(DenseTreePlacements.DENSE_MEGA_SPRUCE_CHECKED.getHolder().orElseThrow(), 0.025641026F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_MEGA_PINE_CHECKED.getHolder().orElseThrow(), 0.30769232F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_PINE_CHECKED.getHolder().orElseThrow(), 0.33333334F)), DenseTreePlacements.DENSE_SPRUCE_CHECKED.getHolder().orElseThrow())));
 	public static final RegistryObject<ConfiguredFeature<?, ?>> DENSE_TREES_JUNGLE = CONFIGURED_FEATURES.register("dense_trees_jungle", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(DenseTreePlacements.DENSE_FANCY_OAK_CHECKED.getHolder().orElseThrow(), 0.1F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_JUNGLE_BUSH.getHolder().orElseThrow(), 0.5F), new WeightedPlacedFeature(DenseTreePlacements.DENSE_MEGA_JUNGLE_TREE_CHECKED.getHolder().orElseThrow(), 0.33333334F)), DenseTreePlacements.DENSE_JUNGLE_TREE_CHECKED.getHolder().orElseThrow())));
+	public static final RegistryObject<ConfiguredFeature<?, ?>> DENSE_MANGROVE_VEGETATION = CONFIGURED_FEATURES.register("dense_mangrove_vegetation", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(DenseTreePlacements.DENSE_TALL_MANGROVE_CHECKED.getHolder().orElseThrow(), 0.85F)), DenseTreePlacements.DENSE_MANGROVE_CHECKED.getHolder().orElseThrow())));
 
 }

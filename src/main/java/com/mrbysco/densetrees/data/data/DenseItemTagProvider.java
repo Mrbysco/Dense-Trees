@@ -17,6 +17,7 @@ public class DenseItemTagProvider extends ItemTagsProvider {
 	protected void addTags() {
 		this.tag(ItemTags.LOGS).add(DenseRegistry.DENSE_OAK_LOG_ITEM.get(), DenseRegistry.DENSE_SPRUCE_LOG_ITEM.get(),
 				DenseRegistry.DENSE_BIRCH_LOG_ITEM.get(), DenseRegistry.DENSE_JUNGLE_LOG_ITEM.get(),
-				DenseRegistry.DENSE_ACACIA_LOG_ITEM.get(), DenseRegistry.DENSE_DARK_OAK_LOG_ITEM.get());
+				DenseRegistry.DENSE_ACACIA_LOG_ITEM.get(), DenseRegistry.DENSE_DARK_OAK_LOG_ITEM.get(),
+				DenseRegistry.DENSE_MANGROVE_LOG_ITEM.get());
 	}
 }

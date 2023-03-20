@@ -47,6 +47,8 @@ public class SaplingHandler {
 		map.put(TreeFeatures.SWAMP_OAK.unwrapKey().orElseThrow().location(), () -> DenseTreeFeatures.DENSE_SWAMP_OAK.getHolder().orElseThrow());
 		map.put(TreeFeatures.JUNGLE_BUSH.unwrapKey().orElseThrow().location(), () -> DenseTreeFeatures.DENSE_JUNGLE_BUSH.getHolder().orElseThrow());
 		map.put(TreeFeatures.AZALEA_TREE.unwrapKey().orElseThrow().location(), () -> DenseTreeFeatures.DENSE_AZALEA_TREE.getHolder().orElseThrow());
+		map.put(TreeFeatures.MANGROVE.unwrapKey().orElseThrow().location(), () -> DenseTreeFeatures.DENSE_MANGROVE.getHolder().orElseThrow());
+		map.put(TreeFeatures.TALL_MANGROVE.unwrapKey().orElseThrow().location(), () -> DenseTreeFeatures.DENSE_TALL_MANGROVE.getHolder().orElseThrow());
 		map.put(TreeFeatures.OAK_BEES_0002.unwrapKey().orElseThrow().location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_0002.getHolder().orElseThrow());
 		map.put(TreeFeatures.OAK_BEES_002.unwrapKey().orElseThrow().location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_002.getHolder().orElseThrow());
 		map.put(TreeFeatures.OAK_BEES_005.unwrapKey().orElseThrow().location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_005.getHolder().orElseThrow());
