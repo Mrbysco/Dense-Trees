@@ -4,6 +4,7 @@ import com.mrbysco.densetrees.config.DenseConfig;
 import com.mrbysco.densetrees.world.DenseTreeFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.features.TreeFeatures;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -21,9 +22,11 @@ public class SaplingHandler {
 	public void saplingGrowEvent(SaplingGrowTreeEvent event) {
 		LevelAccessor levelAccessor = event.getLevel();
 		if (DenseConfig.COMMON.enableSaplingToDenseTree.get() && levelAccessor.getRandom().nextDouble() <= DenseConfig.COMMON.saplingToDenseTreeChance.get()) {
-			var unwrappedKey = event.getFeature().unwrapKey().orElse(null);
+			ResourceKey<? extends ConfiguredFeature<?, ?>> unwrappedKey = event.getFeature().unwrapKey().orElse(null);
 			if (unwrappedKey != null && changeFeatureMap.containsKey(unwrappedKey.location())) {
-				event.setFeature(changeFeatureMap.get(event.getFeature()).get());
+				Holder<? extends ConfiguredFeature<?, ?>> denseConfiguredFeature = changeFeatureMap.getOrDefault(unwrappedKey.location(), () -> null).get();
+				if (denseConfiguredFeature != null)
+					event.setFeature(denseConfiguredFeature);
 			}
 		}
 	}
