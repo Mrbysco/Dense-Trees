@@ -32,7 +32,6 @@ public class DenseTrees {
 		DenseTreeFeatures.CONFIGURED_FEATURES.register(eventBus);
 		DenseTreePlacements.PLACED_FEATURES.register(eventBus);
 		DenseVegetationFeatures.CONFIGURED_FEATURES.register(eventBus);
-//		DenseVegetationPlacements.PLACED_FEATURES.register(eventBus);
 
 		MinecraftForge.EVENT_BUS.register(new SaplingHandler());
 	}
