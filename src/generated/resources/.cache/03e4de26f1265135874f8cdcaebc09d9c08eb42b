@@ -1,2 +1,5 @@
-// 1.19.2	2023-03-20T19:32:01.5013719	Tags for minecraft:item
+// 1.19.2	2023-06-05T16:25:07.7425869	Tags for minecraft:item
+f2a36aac79e289771660d7b69a8dd3e18cf4fb96 data/minecraft/tags/items/crimson_stems.json
 fd4805a83107d63b2e7864191c67e955dfd29446 data/minecraft/tags/items/logs.json
+c2acbb05b8ba806edd40558915f3ee762d20f55e data/minecraft/tags/items/non_flammable_wood.json
+8ada91c8dfcf8ad0924fe6e194e6f388ca0430b9 data/minecraft/tags/items/warped_stems.json
