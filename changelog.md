@@ -1,1 +1,1 @@
-* Fix sapling handler
+* Add the dense crimson/warped stems to the appropriate block tags
