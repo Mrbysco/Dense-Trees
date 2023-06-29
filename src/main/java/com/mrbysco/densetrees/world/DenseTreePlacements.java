@@ -1,10 +1,11 @@
 package com.mrbysco.densetrees.world;
 
-import com.mrbysco.densetrees.DenseTrees;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -12,62 +13,66 @@ import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 public class DenseTreePlacements {
-	public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DenseTrees.MOD_ID);
-
 	public static final BlockPredicate SNOW_TREE_PREDICATE = BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.SNOW_BLOCK, Blocks.POWDER_SNOW);
 	public static final List<PlacementModifier> SNOW_TREE_FILTER_DECORATOR = List.of(EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.POWDER_SNOW)), 8), BlockPredicateFilter.forPredicate(SNOW_TREE_PREDICATE));
 
-	public static final RegistryObject<PlacedFeature> DENSE_OAK_CHECKED = register("dense_oak_checked", DenseTreeFeatures.DENSE_OAK.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_DARK_OAK_CHECKED = register("dense_dark_oak_checked", DenseTreeFeatures.DENSE_DARK_OAK.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.DARK_OAK_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_BIRCH_CHECKED = register("dense_birch_checked", DenseTreeFeatures.DENSE_BIRCH.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_ACACIA_CHECKED = register("dense_acacia_checked", DenseTreeFeatures.DENSE_ACACIA.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.ACACIA_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_SPRUCE_CHECKED = register("dense_spruce_checked", DenseTreeFeatures.DENSE_SPRUCE.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_MANGROVE_CHECKED = register("dense_mangrove_checked", DenseTreeFeatures.DENSE_MANGROVE.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.MANGROVE_PROPAGULE));
-	public static final RegistryObject<PlacedFeature> DENSE_PINE_ON_SNOW = register("dense_pine_on_snow", DenseTreeFeatures.DENSE_PINE.getHolder().orElseThrow(), SNOW_TREE_FILTER_DECORATOR);
-	public static final RegistryObject<PlacedFeature> DENSE_SPRUCE_ON_SNOW = register("dense_spruce_on_snow", DenseTreeFeatures.DENSE_SPRUCE.getHolder().orElseThrow(), SNOW_TREE_FILTER_DECORATOR);
-	public static final RegistryObject<PlacedFeature> DENSE_PINE_CHECKED = register("dense_pine_checked", DenseTreeFeatures.DENSE_PINE.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_JUNGLE_TREE_CHECKED = register("dense_jungle_tree", DenseTreeFeatures.DENSE_JUNGLE_TREE.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_FANCY_OAK_CHECKED = register("dense_fancy_oak_checked", DenseTreeFeatures.DENSE_FANCY_OAK.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_MEGA_JUNGLE_TREE_CHECKED = register("dense_mega_jungle_tree_checked", DenseTreeFeatures.DENSE_MEGA_JUNGLE_TREE.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_MEGA_SPRUCE_CHECKED = register("dense_mega_spruce_checked", DenseTreeFeatures.DENSE_MEGA_SPRUCE.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_MEGA_PINE_CHECKED = register("dense_mega_pine_checked", DenseTreeFeatures.DENSE_MEGA_PINE.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_TALL_MANGROVE_CHECKED = register("dense_tall_mangrove_checked", DenseTreeFeatures.DENSE_TALL_MANGROVE.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.MANGROVE_PROPAGULE));
-	public static final RegistryObject<PlacedFeature> DENSE_JUNGLE_BUSH = register("dense_jungle_bush", DenseTreeFeatures.DENSE_JUNGLE_BUSH.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_SUPER_BIRCH_BEES_0002 = register("dense_super_birch_bees_0002", DenseTreeFeatures.DENSE_SUPER_BIRCH_BEES_0002.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_SUPER_BIRCH_BEES = register("dense_super_birch_bees", DenseTreeFeatures.DENSE_SUPER_BIRCH_BEES.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_OAK_BEES_0002 = register("dense_oak_bees_0002", DenseTreeFeatures.DENSE_OAK_BEES_0002.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_OAK_BEES_002 = register("dense_oak_bees_002", DenseTreeFeatures.DENSE_OAK_BEES_002.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_BIRCH_BEES_0002_PLACED = register("dense_birch_bees_0002", DenseTreeFeatures.DENSE_BIRCH_BEES_0002.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_BIRCH_BEES_002 = register("dense_birch_bees_002", DenseTreeFeatures.DENSE_BIRCH_BEES_002.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_FANCY_OAK_BEES_0002 = register("dense_fancy_oak_bees_0002", DenseTreeFeatures.DENSE_FANCY_OAK_BEES_0002.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_FANCY_OAK_BEES_002 = register("dense_fancy_oak_bees_002", DenseTreeFeatures.DENSE_FANCY_OAK_BEES_002.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-	public static final RegistryObject<PlacedFeature> DENSE_FANCY_OAK_BEES = register("dense_fancy_oak_bees", DenseTreeFeatures.DENSE_FANCY_OAK_BEES.getHolder().orElseThrow(), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+	public static final ResourceKey<PlacedFeature> DENSE_OAK_CHECKED = PlacementUtils.createKey("densetrees:dense_oak_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_DARK_OAK_CHECKED = PlacementUtils.createKey("densetrees:dense_dark_oak_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_BIRCH_CHECKED = PlacementUtils.createKey("densetrees:dense_birch_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_ACACIA_CHECKED = PlacementUtils.createKey("densetrees:dense_acacia_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_SPRUCE_CHECKED = PlacementUtils.createKey("densetrees:dense_spruce_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_MANGROVE_CHECKED = PlacementUtils.createKey("densetrees:dense_mangrove_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_PINE_ON_SNOW = PlacementUtils.createKey("densetrees:dense_pine_on_snow");
+	public static final ResourceKey<PlacedFeature> DENSE_SPRUCE_ON_SNOW = PlacementUtils.createKey("densetrees:dense_spruce_on_snow");
+	public static final ResourceKey<PlacedFeature> DENSE_PINE_CHECKED = PlacementUtils.createKey("densetrees:dense_pine_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_JUNGLE_TREE_CHECKED = PlacementUtils.createKey("densetrees:dense_jungle_tree");
+	public static final ResourceKey<PlacedFeature> DENSE_FANCY_OAK_CHECKED = PlacementUtils.createKey("densetrees:dense_fancy_oak_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_MEGA_JUNGLE_TREE_CHECKED = PlacementUtils.createKey("densetrees:dense_mega_jungle_tree_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_MEGA_SPRUCE_CHECKED = PlacementUtils.createKey("densetrees:dense_mega_spruce_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_MEGA_PINE_CHECKED = PlacementUtils.createKey("densetrees:dense_mega_pine_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_TALL_MANGROVE_CHECKED = PlacementUtils.createKey("densetrees:dense_tall_mangrove_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_JUNGLE_BUSH = PlacementUtils.createKey("densetrees:dense_jungle_bush");
+	public static final ResourceKey<PlacedFeature> DENSE_SUPER_BIRCH_BEES_0002 = PlacementUtils.createKey("densetrees:dense_super_birch_bees_0002");
+	public static final ResourceKey<PlacedFeature> DENSE_SUPER_BIRCH_BEES = PlacementUtils.createKey("densetrees:dense_super_birch_bees");
+	public static final ResourceKey<PlacedFeature> DENSE_OAK_BEES_0002 = PlacementUtils.createKey("densetrees:dense_oak_bees_0002");
+	public static final ResourceKey<PlacedFeature> DENSE_OAK_BEES_002 = PlacementUtils.createKey("densetrees:dense_oak_bees_002");
+	public static final ResourceKey<PlacedFeature> DENSE_BIRCH_BEES_0002_PLACED = PlacementUtils.createKey("densetrees:dense_birch_bees_0002");
+	public static final ResourceKey<PlacedFeature> DENSE_BIRCH_BEES_002 = PlacementUtils.createKey("densetrees:dense_birch_bees_002");
+	public static final ResourceKey<PlacedFeature> DENSE_FANCY_OAK_BEES_0002 = PlacementUtils.createKey("densetrees:dense_fancy_oak_bees_0002");
+	public static final ResourceKey<PlacedFeature> DENSE_FANCY_OAK_BEES_002 = PlacementUtils.createKey("densetrees:dense_fancy_oak_bees_002");
+	public static final ResourceKey<PlacedFeature> DENSE_FANCY_OAK_BEES = PlacementUtils.createKey("densetrees:dense_fancy_oak_bees");
 
-//	public static final RegistryObject<PlacedFeature> DENSE_CRIMSON_FUNGI = register("dense_crimson_fungi", DenseTreeFeatures.DENSE_CRIMSON_FUNGUS.getHolder().orElseThrow(), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(5));
-//	public static final RegistryObject<PlacedFeature> DENSE_WARPED_FUNGI = register("dense_warped_fungi", DenseTreeFeatures.DENSE_WARPED_FUNGUS.getHolder().orElseThrow(), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(5));
+	public static void bootstrap(BootstapContext<PlacedFeature> context) {
+		HolderGetter<ConfiguredFeature<?, ?>> configuredGetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
-	private static RegistryObject<PlacedFeature> register(String registryName,
-														  Holder<? extends ConfiguredFeature<?, ?>> configuredHolder,
-														  List<PlacementModifier> placementModifiers) {
-		return PLACED_FEATURES.register(registryName, () -> new PlacedFeature(Holder.hackyErase(configuredHolder), List.copyOf(placementModifiers)));
-	}
-
-	private static RegistryObject<PlacedFeature> register(String registryName,
-														  Holder<? extends ConfiguredFeature<?, ?>> configuredHolder,
-														  Supplier<List<PlacementModifier>> placementModifiers) {
-		return PLACED_FEATURES.register(registryName, () -> new PlacedFeature(Holder.hackyErase(configuredHolder), List.copyOf(placementModifiers.get())));
-	}
-
-	private static RegistryObject<PlacedFeature> register(String registryName,
-														  Holder<? extends ConfiguredFeature<?, ?>> configuredHolder,
-														  PlacementModifier... placementModifiers) {
-		return PLACED_FEATURES.register(registryName, () -> new PlacedFeature(Holder.hackyErase(configuredHolder), List.of(placementModifiers)));
+		PlacementUtils.register(context, DENSE_OAK_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_OAK), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_DARK_OAK_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_DARK_OAK), PlacementUtils.filteredByBlockSurvival(Blocks.DARK_OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_BIRCH_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_BIRCH), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+		PlacementUtils.register(context, DENSE_ACACIA_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_ACACIA), PlacementUtils.filteredByBlockSurvival(Blocks.ACACIA_SAPLING));
+		PlacementUtils.register(context, DENSE_SPRUCE_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_SPRUCE), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+		PlacementUtils.register(context, DENSE_MANGROVE_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_MANGROVE), PlacementUtils.filteredByBlockSurvival(Blocks.MANGROVE_PROPAGULE));
+		PlacementUtils.register(context, DENSE_PINE_ON_SNOW, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_PINE), SNOW_TREE_FILTER_DECORATOR);
+		PlacementUtils.register(context, DENSE_SPRUCE_ON_SNOW, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_SPRUCE), SNOW_TREE_FILTER_DECORATOR);
+		PlacementUtils.register(context, DENSE_PINE_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_PINE), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+		PlacementUtils.register(context, DENSE_JUNGLE_TREE_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_JUNGLE_TREE), PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
+		PlacementUtils.register(context, DENSE_FANCY_OAK_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_MEGA_JUNGLE_TREE_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_MEGA_JUNGLE_TREE), PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
+		PlacementUtils.register(context, DENSE_MEGA_SPRUCE_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_MEGA_SPRUCE), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+		PlacementUtils.register(context, DENSE_MEGA_PINE_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_MEGA_PINE), PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+		PlacementUtils.register(context, DENSE_TALL_MANGROVE_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_TALL_MANGROVE), PlacementUtils.filteredByBlockSurvival(Blocks.MANGROVE_PROPAGULE));
+		PlacementUtils.register(context, DENSE_JUNGLE_BUSH, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_JUNGLE_BUSH), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_SUPER_BIRCH_BEES_0002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_SUPER_BIRCH_BEES_0002), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+		PlacementUtils.register(context, DENSE_SUPER_BIRCH_BEES, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_SUPER_BIRCH_BEES), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+		PlacementUtils.register(context, DENSE_OAK_BEES_0002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_OAK_BEES_0002), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_OAK_BEES_002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_OAK_BEES_002), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_BIRCH_BEES_0002_PLACED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_BIRCH_BEES_0002), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+		PlacementUtils.register(context, DENSE_BIRCH_BEES_002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_BIRCH_BEES_002), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES_0002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES_0002), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES_002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES_002), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
 	}
 }

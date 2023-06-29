@@ -1,1 +1,1 @@
-* Add the dense crimson/warped stems to the appropriate block tags
+* Initial update to 1.19.4 (Skipped 1.19.3 as the biome modifiers weren't working in that version)

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "#": {
       "item": "densetrees:dense_spruce_log"
@@ -12,5 +13,6 @@
   "result": {
     "count": 64,
     "item": "minecraft:spruce_log"
-  }
+  },
+  "show_notification": true
 }

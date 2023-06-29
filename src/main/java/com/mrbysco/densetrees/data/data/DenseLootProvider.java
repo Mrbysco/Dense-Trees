@@ -1,44 +1,40 @@
 package com.mrbysco.densetrees.data.data;
 
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
 import com.mrbysco.densetrees.registry.DenseRegistry;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.Set;
 
 public class DenseLootProvider extends LootTableProvider {
-	public DenseLootProvider(DataGenerator gen) {
-		super(gen);
-	}
-
-	@Override
-	protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
-		return ImmutableList.of(
-				Pair.of(FarmingBlocks::new, LootContextParamSets.BLOCK)
+	public DenseLootProvider(PackOutput packOutput) {
+		super(packOutput, Set.of(),
+				List.of(
+						new SubProviderEntry(FarmingBlocks::new, LootContextParamSets.BLOCK)
+				)
 		);
 	}
 
-	private static class FarmingBlocks extends BlockLoot {
+	private static class FarmingBlocks extends BlockLootSubProvider {
+		protected FarmingBlocks() {
+			super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+		}
 
 		@Override
-		protected void addTables() {
+		protected void generate() {
 			for (RegistryObject<Block> registryObject : DenseRegistry.BLOCKS.getEntries()) {
 				if (registryObject.get() instanceof RotatedPillarBlock)
 					this.dropSelf(registryObject.get());
@@ -53,7 +49,7 @@ public class DenseLootProvider extends LootTableProvider {
 	}
 
 	@Override
-	protected void validate(Map<ResourceLocation, LootTable> map, @Nonnull ValidationContext validationtracker) {
+	protected void validate(Map<ResourceLocation, LootTable> map, @NotNull ValidationContext validationtracker) {
 		map.forEach((name, table) -> LootTables.validate(validationtracker, name, table));
 	}
 }

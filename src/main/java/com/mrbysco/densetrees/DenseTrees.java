@@ -5,16 +5,18 @@ import com.mrbysco.densetrees.config.DenseConfig;
 import com.mrbysco.densetrees.handler.SaplingHandler;
 import com.mrbysco.densetrees.registry.DenseModifiers;
 import com.mrbysco.densetrees.registry.DenseRegistry;
-import com.mrbysco.densetrees.world.DenseTreeFeatures;
-import com.mrbysco.densetrees.world.DenseTreePlacements;
-import com.mrbysco.densetrees.world.DenseVegetationFeatures;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+
+import java.util.List;
 
 @Mod(DenseTrees.MOD_ID)
 public class DenseTrees {
@@ -26,13 +28,19 @@ public class DenseTrees {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DenseConfig.commonSpec);
 		eventBus.register(DenseConfig.class);
 
+		eventBus.addListener(this::registerCreativeTab);
+
 		DenseRegistry.BLOCKS.register(eventBus);
 		DenseRegistry.ITEMS.register(eventBus);
 		DenseModifiers.BIOME_MODIFIER_SERIALIZERS.register(eventBus);
-		DenseTreeFeatures.CONFIGURED_FEATURES.register(eventBus);
-		DenseTreePlacements.PLACED_FEATURES.register(eventBus);
-		DenseVegetationFeatures.CONFIGURED_FEATURES.register(eventBus);
 
 		MinecraftForge.EVENT_BUS.register(new SaplingHandler());
+	}
+
+	private void registerCreativeTab(final CreativeModeTabEvent.BuildContents event) {
+		if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) {
+			List<ItemStack> stacks = DenseRegistry.ITEMS.getEntries().stream().map(reg -> new ItemStack(reg.get())).toList();
+			event.acceptAll(stacks);
+		}
 	}
 }

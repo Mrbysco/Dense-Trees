@@ -4,7 +4,6 @@ import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.block.DenseLogBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -53,6 +52,6 @@ public class DenseRegistry {
 	}
 
 	private static Item.Properties itemProperties() {
-		return new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS);
+		return new Item.Properties();
 	}
 }

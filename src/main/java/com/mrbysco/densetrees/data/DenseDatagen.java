@@ -1,7 +1,5 @@
 package com.mrbysco.densetrees.data;
 
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
 import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.data.assets.DenseBlockStateProvider;
 import com.mrbysco.densetrees.data.assets.DenseItemModelProvider;
@@ -11,40 +9,70 @@ import com.mrbysco.densetrees.data.data.DenseBlockTagProvider;
 import com.mrbysco.densetrees.data.data.DenseItemTagProvider;
 import com.mrbysco.densetrees.data.data.DenseLootProvider;
 import com.mrbysco.densetrees.data.data.DenseRecipeProvider;
-import net.minecraft.core.Registry;
+import com.mrbysco.densetrees.world.DensePlacedFeatures;
+import com.mrbysco.densetrees.world.DenseTreeFeatures;
+import com.mrbysco.densetrees.world.DenseTreePlacements;
+import com.mrbysco.densetrees.world.DenseVegetationFeatures;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.resources.RegistryOps;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.registries.VanillaRegistries;
+import net.minecraftforge.common.data.BlockTagsProvider;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.JsonCodecProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DenseDatagen {
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
-		final RegistryOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, RegistryAccess.builtinCopy());
 		DataGenerator generator = event.getGenerator();
+		PackOutput packOutput = generator.getPackOutput();
+		CompletableFuture<HolderLookup.Provider> lookupProvider = CompletableFuture.supplyAsync(DenseDatagen::getProvider);
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if (event.includeServer()) {
-			generator.addProvider(true, new DenseRecipeProvider(generator));
-			generator.addProvider(true, new DenseLootProvider(generator));
+			generator.addProvider(true, new DenseRecipeProvider(packOutput));
+			generator.addProvider(true, new DenseLootProvider(packOutput));
 			BlockTagsProvider provider;
-			generator.addProvider(true, provider = new DenseBlockTagProvider(generator, helper));
-			generator.addProvider(true, new DenseItemTagProvider(generator, provider, helper));
+			generator.addProvider(true, provider = new DenseBlockTagProvider(packOutput, lookupProvider, helper));
+			generator.addProvider(true, new DenseItemTagProvider(packOutput, lookupProvider, provider, helper));
 
-			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(generator, helper, DenseTrees.MOD_ID, ops, Registry.PLACED_FEATURE_REGISTRY, DenseBiomeModifiers.getPlacedFeatures(ops)));
-			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(generator, helper, DenseTrees.MOD_ID, ops, ForgeRegistries.Keys.BIOME_MODIFIERS, DenseBiomeModifiers.getBiomeModifiers(ops)));
+			generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(
+					packOutput, lookupProvider, Set.of(DenseTrees.MOD_ID)));
 		}
 		if (event.includeClient()) {
-			generator.addProvider(true, new DenseLanguageProvider(generator));
-			generator.addProvider(true, new DenseBlockStateProvider(generator, helper));
-			generator.addProvider(true, new DenseItemModelProvider(generator, helper));
+			generator.addProvider(true, new DenseLanguageProvider(packOutput));
+			generator.addProvider(true, new DenseBlockStateProvider(packOutput, helper));
+			generator.addProvider(true, new DenseItemModelProvider(packOutput, helper));
 		}
+	}
+
+	private static HolderLookup.Provider getProvider() {
+		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
+		registryBuilder.add(Registries.CONFIGURED_FEATURE, context -> {
+			DenseVegetationFeatures.bootstrap(context);
+			DenseTreeFeatures.bootstrap(context);
+		});
+		registryBuilder.add(Registries.PLACED_FEATURE, context -> {
+			DensePlacedFeatures.bootstrap(context);
+			DenseTreePlacements.bootstrap(context);
+		});
+		registryBuilder.add(ForgeRegistries.Keys.BIOME_MODIFIERS, DenseBiomeModifiers::bootstrap);
+		// We need the BIOME registry to be present so we can use a biome tag, doesn't matter that it's empty
+		registryBuilder.add(Registries.BIOME, $ -> {
+		});
+		RegistryAccess.Frozen regAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
+		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup());
 	}
 }

@@ -2,7 +2,7 @@ package com.mrbysco.densetrees.data.assets;
 
 import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.registry.DenseRegistry;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -11,8 +11,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
 public class DenseItemModelProvider extends ItemModelProvider {
-	public DenseItemModelProvider(DataGenerator gen, ExistingFileHelper fileHelper) {
-		super(gen, DenseTrees.MOD_ID, fileHelper);
+	public DenseItemModelProvider(PackOutput packOutput, ExistingFileHelper fileHelper) {
+		super(packOutput, DenseTrees.MOD_ID, fileHelper);
 	}
 
 	@Override

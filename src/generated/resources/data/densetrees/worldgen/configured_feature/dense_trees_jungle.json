@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "densetrees:dense_jungle_tree",
+    "features": [
+      {
+        "chance": 0.1,
+        "feature": "densetrees:dense_fancy_oak_checked"
+      },
+      {
+        "chance": 0.5,
+        "feature": "densetrees:dense_jungle_bush"
+      },
+      {
+        "chance": 0.33333334,
+        "feature": "densetrees:dense_mega_jungle_tree_checked"
+      }
+    ]
+  }
+}
