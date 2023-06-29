@@ -1,1 +1,1 @@
-* Add the dense crimson/warped stems to the appropriate block tags
+* Initial update to 1.20

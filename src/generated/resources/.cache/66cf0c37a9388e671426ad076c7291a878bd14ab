@@ -1,6 +1,7 @@
-// 1.19.4	2023-06-29T03:46:12.8102536	Block States: densetrees
+// 1.20.1	2023-06-29T04:10:55.5689443	Block States: densetrees
 5dfcde4c3ce80a69c2e5d6a44a1a76301347102b assets/densetrees/blockstates/dense_acacia_log.json
 42ba12831cfa395fd5a8503a6de851eb00c4117a assets/densetrees/blockstates/dense_birch_log.json
+4d3973201741180c797441eefc296e87bf5d1842 assets/densetrees/blockstates/dense_cherry_log.json
 1ecf6075db99cb7cf690f255f30a0c1f56e7447a assets/densetrees/blockstates/dense_crimson_stem.json
 659c9aef9542431926bc2b19d3df84c46dda3220 assets/densetrees/blockstates/dense_dark_oak_log.json
 677155e56ddd9b9dc6f1c94df729e11423e05010 assets/densetrees/blockstates/dense_jungle_log.json
@@ -12,6 +13,8 @@
 26adfc05fd6a72a491e2a905f78d8271f314918c assets/densetrees/models/block/dense_acacia_log_horizontal.json
 834fd390f251bda4c111b461a7b851b1428ed529 assets/densetrees/models/block/dense_birch_log.json
 2fe7941aab4ff4cd446e7cfd28c3df41b15fdf01 assets/densetrees/models/block/dense_birch_log_horizontal.json
+1f165518686d27fef787c03a86570ba696ef5af2 assets/densetrees/models/block/dense_cherry_log.json
+aac851e28aa215372c2bd09f2e5db2bde3fcb91f assets/densetrees/models/block/dense_cherry_log_horizontal.json
 ef7de3d3da758a8f462cc330b3b6a82fffe2864c assets/densetrees/models/block/dense_crimson_stem.json
 33a540f5f51d6fa9d78b003028e0e9fd7c6ade93 assets/densetrees/models/block/dense_crimson_stem_horizontal.json
 18830206c50b5a0f8942506ae7623e90ed7b2ff5 assets/densetrees/models/block/dense_dark_oak_log.json

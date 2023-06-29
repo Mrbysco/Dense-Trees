@@ -11,11 +11,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.WeightedListInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MangrovePropaguleBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
@@ -25,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.DarkOakFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
@@ -45,6 +49,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.CocoaDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.BendingTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
@@ -93,6 +98,8 @@ public class DenseTreeFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES_002 = FeatureUtils.createKey("densetrees:dense_fancy_oak_bees_002");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES_005 = FeatureUtils.createKey("densetrees:dense_fancy_oak_bees_005");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES = FeatureUtils.createKey("densetrees:dense_fancy_oak_bees");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY = FeatureUtils.createKey("densetrees:dense_cherry");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY_BEES_005 = FeatureUtils.createKey("densetrees:dense_cherry_bees_005");
 
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CRIMSON_FUNGUS = FeatureUtils.createKey("densetrees:dense_crimson_fungus");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CRIMSON_FUNGUS_PLANTED = FeatureUtils.createKey("densetrees:dense_crimson_fungus_planted");
@@ -129,11 +136,14 @@ public class DenseTreeFeatures {
 		FeatureUtils.register(context, DENSE_FANCY_OAK_BEES_002, Feature.TREE, createFancyOak().decorators(List.of(BEEHIVE_002)).build());
 		FeatureUtils.register(context, DENSE_FANCY_OAK_BEES_005, Feature.TREE, createFancyOak().decorators(List.of(BEEHIVE_005)).build());
 		FeatureUtils.register(context, DENSE_FANCY_OAK_BEES, Feature.TREE, createFancyOak().decorators(List.of(BEEHIVE)).build());
+		FeatureUtils.register(context, DENSE_CHERRY, Feature.TREE, cherry().build());
+		FeatureUtils.register(context, DENSE_CHERRY_BEES_005, Feature.TREE, cherry().decorators(List.of(BEEHIVE_005)).build());
 
-		FeatureUtils.register(context, DENSE_CRIMSON_FUNGUS, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(Blocks.CRIMSON_NYLIUM.defaultBlockState(), DenseRegistry.DENSE_CRIMSON_STEM.get().defaultBlockState(), Blocks.NETHER_WART_BLOCK.defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), false));
-		FeatureUtils.register(context, DENSE_CRIMSON_FUNGUS_PLANTED, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(Blocks.CRIMSON_NYLIUM.defaultBlockState(), DenseRegistry.DENSE_CRIMSON_STEM.get().defaultBlockState(), Blocks.NETHER_WART_BLOCK.defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), true));
-		FeatureUtils.register(context, DENSE_WARPED_FUNGUS, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(Blocks.WARPED_NYLIUM.defaultBlockState(), DenseRegistry.DENSE_WARPED_STEM.get().defaultBlockState(), Blocks.WARPED_WART_BLOCK.defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), false));
-		FeatureUtils.register(context, DENSE_WARPED_FUNGUS_PLANTED, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(Blocks.WARPED_NYLIUM.defaultBlockState(), DenseRegistry.DENSE_WARPED_STEM.get().defaultBlockState(), Blocks.WARPED_WART_BLOCK.defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), true));
+		BlockPredicate blockpredicate = BlockPredicate.matchesBlocks(Blocks.OAK_SAPLING, Blocks.SPRUCE_SAPLING, Blocks.BIRCH_SAPLING, Blocks.JUNGLE_SAPLING, Blocks.ACACIA_SAPLING, Blocks.CHERRY_SAPLING, Blocks.DARK_OAK_SAPLING, Blocks.MANGROVE_PROPAGULE, Blocks.DANDELION, Blocks.TORCHFLOWER, Blocks.POPPY, Blocks.BLUE_ORCHID, Blocks.ALLIUM, Blocks.AZURE_BLUET, Blocks.RED_TULIP, Blocks.ORANGE_TULIP, Blocks.WHITE_TULIP, Blocks.PINK_TULIP, Blocks.OXEYE_DAISY, Blocks.CORNFLOWER, Blocks.WITHER_ROSE, Blocks.LILY_OF_THE_VALLEY, Blocks.BROWN_MUSHROOM, Blocks.RED_MUSHROOM, Blocks.WHEAT, Blocks.SUGAR_CANE, Blocks.ATTACHED_PUMPKIN_STEM, Blocks.ATTACHED_MELON_STEM, Blocks.PUMPKIN_STEM, Blocks.MELON_STEM, Blocks.LILY_PAD, Blocks.NETHER_WART, Blocks.COCOA, Blocks.CARROTS, Blocks.POTATOES, Blocks.CHORUS_PLANT, Blocks.CHORUS_FLOWER, Blocks.TORCHFLOWER_CROP, Blocks.PITCHER_CROP, Blocks.BEETROOTS, Blocks.SWEET_BERRY_BUSH, Blocks.WARPED_FUNGUS, Blocks.CRIMSON_FUNGUS, Blocks.WEEPING_VINES, Blocks.WEEPING_VINES_PLANT, Blocks.TWISTING_VINES, Blocks.TWISTING_VINES_PLANT, Blocks.CAVE_VINES, Blocks.CAVE_VINES_PLANT, Blocks.SPORE_BLOSSOM, Blocks.AZALEA, Blocks.FLOWERING_AZALEA, Blocks.MOSS_CARPET, Blocks.PINK_PETALS, Blocks.BIG_DRIPLEAF, Blocks.BIG_DRIPLEAF_STEM, Blocks.SMALL_DRIPLEAF);
+		FeatureUtils.register(context, DENSE_CRIMSON_FUNGUS, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(Blocks.CRIMSON_NYLIUM.defaultBlockState(), DenseRegistry.DENSE_CRIMSON_STEM.get().defaultBlockState(), Blocks.NETHER_WART_BLOCK.defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), blockpredicate, false));
+		FeatureUtils.register(context, DENSE_CRIMSON_FUNGUS_PLANTED, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(Blocks.CRIMSON_NYLIUM.defaultBlockState(), DenseRegistry.DENSE_CRIMSON_STEM.get().defaultBlockState(), Blocks.NETHER_WART_BLOCK.defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), blockpredicate, true));
+		FeatureUtils.register(context, DENSE_WARPED_FUNGUS, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(Blocks.WARPED_NYLIUM.defaultBlockState(), DenseRegistry.DENSE_WARPED_STEM.get().defaultBlockState(), Blocks.WARPED_WART_BLOCK.defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), blockpredicate, false));
+		FeatureUtils.register(context, DENSE_WARPED_FUNGUS_PLANTED, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(Blocks.WARPED_NYLIUM.defaultBlockState(), DenseRegistry.DENSE_WARPED_STEM.get().defaultBlockState(), Blocks.WARPED_WART_BLOCK.defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), blockpredicate, true));
 	}
 
 	private static TreeConfiguration.TreeConfigurationBuilder createStraightBlobTree(Block log, Block leaves, int baseHeight, int heightRandA, int heightRandB, int radius) {
@@ -167,5 +177,26 @@ public class DenseTreeFeatures {
 				BlockStateProvider.simple(Blocks.OAK_LEAVES),
 				new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
 				new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines();
+	}
+
+
+	private static TreeConfiguration.TreeConfigurationBuilder cherry() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(
+				BlockStateProvider.simple(DenseRegistry.DENSE_CHERRY_LOG.get()),
+				new CherryTrunkPlacer(7, 1, 0,
+						new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder()
+								.add(ConstantInt.of(1), 1)
+								.add(ConstantInt.of(2), 1)
+								.add(ConstantInt.of(3), 1).build()
+						),
+						UniformInt.of(2, 4),
+						UniformInt.of(-4, -3),
+						UniformInt.of(-1, 0)),
+				BlockStateProvider.simple(Blocks.CHERRY_LEAVES),
+				new CherryFoliagePlacer(ConstantInt.of(4),
+						ConstantInt.of(0),
+						ConstantInt.of(5),
+						0.25F, 0.5F, 0.16666667F, 0.33333334F),
+				new TwoLayersFeatureSize(1, 0, 2))).ignoreVines();
 	}
 }

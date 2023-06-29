@@ -8,7 +8,7 @@ import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -37,8 +37,8 @@ public class DenseTrees {
 		MinecraftForge.EVENT_BUS.register(new SaplingHandler());
 	}
 
-	private void registerCreativeTab(final CreativeModeTabEvent.BuildContents event) {
-		if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) {
+	private void registerCreativeTab(final BuildCreativeModeTabContentsEvent event) {
+		if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
 			List<ItemStack> stacks = DenseRegistry.ITEMS.getEntries().stream().map(reg -> new ItemStack(reg.get())).toList();
 			event.acceptAll(stacks);
 		}

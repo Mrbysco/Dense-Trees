@@ -51,6 +51,8 @@ public class SaplingHandler {
 		map.put(TreeFeatures.AZALEA_TREE.location(), () -> DenseTreeFeatures.DENSE_AZALEA_TREE);
 		map.put(TreeFeatures.MANGROVE.location(), () -> DenseTreeFeatures.DENSE_MANGROVE);
 		map.put(TreeFeatures.TALL_MANGROVE.location(), () -> DenseTreeFeatures.DENSE_TALL_MANGROVE);
+		map.put(TreeFeatures.CHERRY.location(), () -> DenseTreeFeatures.DENSE_CHERRY);
+		map.put(TreeFeatures.CHERRY_BEES_005.location(), () -> DenseTreeFeatures.DENSE_CHERRY_BEES_005);
 		map.put(TreeFeatures.OAK_BEES_0002.location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_0002);
 		map.put(TreeFeatures.OAK_BEES_002.location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_002);
 		map.put(TreeFeatures.OAK_BEES_005.location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_005);

@@ -45,6 +45,8 @@ public class DenseTreePlacements {
 	public static final ResourceKey<PlacedFeature> DENSE_FANCY_OAK_BEES_0002 = PlacementUtils.createKey("densetrees:dense_fancy_oak_bees_0002");
 	public static final ResourceKey<PlacedFeature> DENSE_FANCY_OAK_BEES_002 = PlacementUtils.createKey("densetrees:dense_fancy_oak_bees_002");
 	public static final ResourceKey<PlacedFeature> DENSE_FANCY_OAK_BEES = PlacementUtils.createKey("densetrees:dense_fancy_oak_bees");
+	public static final ResourceKey<PlacedFeature> DENSE_CHERRY_CHECKED = PlacementUtils.createKey("densetrees:dense_cherry_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_CHERRY_BEES_005 = PlacementUtils.createKey("densetrees:dense_cherry_bees_005");
 
 	public static void bootstrap(BootstapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> configuredGetter = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -74,5 +76,7 @@ public class DenseTreePlacements {
 		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES_0002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES_0002), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
 		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES_002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES_002), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
 		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_CHERRY_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_CHERRY), PlacementUtils.filteredByBlockSurvival(Blocks.CHERRY_SAPLING));
+		PlacementUtils.register(context, DENSE_CHERRY_BEES_005, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_CHERRY_BEES_005), PlacementUtils.filteredByBlockSurvival(Blocks.CHERRY_SAPLING));
 	}
 }

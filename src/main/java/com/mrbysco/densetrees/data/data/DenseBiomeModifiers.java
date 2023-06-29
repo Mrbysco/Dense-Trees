@@ -43,6 +43,7 @@ public class DenseBiomeModifiers {
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_OLD_GROWTH_PINE_TAIGA, DensePlacedFeatures.DENSE_TREES_OLD_GROWTH_PINE_TAIGA);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_JUNGLE, DensePlacedFeatures.DENSE_TREES_JUNGLE);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_MANGROVE, DensePlacedFeatures.DENSE_TREES_MANGROVE);
+		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_CHERRY, DensePlacedFeatures.DENSE_TREES_CHERRY);
 		final HolderSet.Named<Biome> nether = biomeGetter.getOrThrow(BiomeTags.IS_NETHER);
 		addDenseVariation(context, placedGetter, nether, TreePlacements.CRIMSON_FUNGI, DensePlacedFeatures.DENSE_CRIMSON_FUNGI);
 		addDenseVariation(context, placedGetter, nether, TreePlacements.WARPED_FUNGI, DensePlacedFeatures.DENSE_WARPED_FUNGI);

@@ -9,7 +9,6 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.registries.RegistryObject;
@@ -50,6 +49,6 @@ public class DenseLootProvider extends LootTableProvider {
 
 	@Override
 	protected void validate(Map<ResourceLocation, LootTable> map, @NotNull ValidationContext validationtracker) {
-		map.forEach((name, table) -> LootTables.validate(validationtracker, name, table));
+		map.forEach((name, table) -> table.validate(validationtracker));
 	}
 }

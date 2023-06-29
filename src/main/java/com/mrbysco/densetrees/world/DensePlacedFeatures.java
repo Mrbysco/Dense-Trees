@@ -48,6 +48,7 @@ public class DensePlacedFeatures {
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_OLD_GROWTH_PINE_TAIGA = PlacementUtils.createKey("densetrees:dense_trees_old_growth_pine_taiga");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_JUNGLE = PlacementUtils.createKey("densetrees:dense_trees_jungle");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_MANGROVE = PlacementUtils.createKey("densetrees:dense_trees_mangrove");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_CHERRY = PlacementUtils.createKey("densetrees:dense_trees_cherry");
 	public static final ResourceKey<PlacedFeature> DENSE_CRIMSON_FUNGI = PlacementUtils.createKey("densetrees:dense_crimson_fungi");
 	public static final ResourceKey<PlacedFeature> DENSE_WARPED_FUNGI = PlacementUtils.createKey("densetrees:dense_warped_fungi");
 
@@ -77,6 +78,7 @@ public class DensePlacedFeatures {
 		PlacementUtils.register(context, DENSE_TREES_OLD_GROWTH_PINE_TAIGA, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_OLD_GROWTH_PINE_TAIGA), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 		PlacementUtils.register(context, DENSE_TREES_JUNGLE, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_JUNGLE), denseTreePlacement(PlacementUtils.countExtra(50, 0.1F, 1)));
 		PlacementUtils.register(context, DENSE_TREES_MANGROVE, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_MANGROVE_VEGETATION), CountPlacement.of(25), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(5), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RarityFilter.onAverageOnceEvery(10), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.MANGROVE_PROPAGULE.defaultBlockState(), BlockPos.ZERO)));
+		PlacementUtils.register(context, DENSE_TREES_CHERRY, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_CHERRY_BEES_005), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1), Blocks.CHERRY_SAPLING));
 		PlacementUtils.register(context, DENSE_CRIMSON_FUNGI, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_CRIMSON_FUNGUS), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(5));
 		PlacementUtils.register(context, DENSE_WARPED_FUNGI, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_WARPED_FUNGUS), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(5));
 	}
