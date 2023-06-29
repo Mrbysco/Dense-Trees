@@ -1,7 +1,6 @@
-// 1.19.2	2023-06-05T16:22:05.6195671	Tags for minecraft:block
+// 1.19.4	2023-06-29T03:46:12.8072535	Tags for minecraft:block mod id densetrees
 f2a36aac79e289771660d7b69a8dd3e18cf4fb96 data/minecraft/tags/blocks/crimson_stems.json
 fd4805a83107d63b2e7864191c67e955dfd29446 data/minecraft/tags/blocks/logs.json
 fd4805a83107d63b2e7864191c67e955dfd29446 data/minecraft/tags/blocks/logs_that_burn.json
 fd4805a83107d63b2e7864191c67e955dfd29446 data/minecraft/tags/blocks/mineable/axe.json
-c2acbb05b8ba806edd40558915f3ee762d20f55e data/minecraft/tags/blocks/non_flammable_wood.json
 8ada91c8dfcf8ad0924fe6e194e6f388ca0430b9 data/minecraft/tags/blocks/warped_stems.json

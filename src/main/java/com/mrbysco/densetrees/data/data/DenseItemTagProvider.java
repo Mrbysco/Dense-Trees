@@ -2,20 +2,24 @@ package com.mrbysco.densetrees.data.data;
 
 import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.registry.DenseRegistry;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import java.util.concurrent.CompletableFuture;
+
 public class DenseItemTagProvider extends ItemTagsProvider {
-	public DenseItemTagProvider(DataGenerator dataGenerator, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
-		super(dataGenerator, blockTagsProvider, DenseTrees.MOD_ID, existingFileHelper);
+	public DenseItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
+								TagsProvider<Block> blockTagProvider, ExistingFileHelper existingFileHelper) {
+		super(output, lookupProvider, blockTagProvider.contentsGetter(), DenseTrees.MOD_ID, existingFileHelper);
 	}
 
 	@Override
-	protected void addTags() {
+	public void addTags(HolderLookup.Provider lookupProvider) {
 		this.tag(ItemTags.LOGS).add(DenseRegistry.DENSE_OAK_LOG_ITEM.get(), DenseRegistry.DENSE_SPRUCE_LOG_ITEM.get(),
 				DenseRegistry.DENSE_BIRCH_LOG_ITEM.get(), DenseRegistry.DENSE_JUNGLE_LOG_ITEM.get(),
 				DenseRegistry.DENSE_ACACIA_LOG_ITEM.get(), DenseRegistry.DENSE_DARK_OAK_LOG_ITEM.get(),

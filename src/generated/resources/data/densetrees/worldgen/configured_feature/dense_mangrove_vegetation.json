@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "densetrees:dense_mangrove_checked",
+    "features": [
+      {
+        "chance": 0.85,
+        "feature": "densetrees:dense_tall_mangrove_checked"
+      }
+    ]
+  }
+}

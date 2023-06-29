@@ -2,12 +2,12 @@ package com.mrbysco.densetrees.data.assets;
 
 import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.registry.DenseRegistry;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class DenseLanguageProvider extends LanguageProvider {
-	public DenseLanguageProvider(DataGenerator gen) {
-		super(gen, DenseTrees.MOD_ID, "en_us");
+	public DenseLanguageProvider(PackOutput packOutput) {
+		super(packOutput, DenseTrees.MOD_ID, "en_us");
 	}
 
 	@Override

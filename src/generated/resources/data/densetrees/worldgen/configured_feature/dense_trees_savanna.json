@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "densetrees:dense_oak_checked",
+    "features": [
+      {
+        "chance": 0.8,
+        "feature": "densetrees:dense_acacia_checked"
+      }
+    ]
+  }
+}

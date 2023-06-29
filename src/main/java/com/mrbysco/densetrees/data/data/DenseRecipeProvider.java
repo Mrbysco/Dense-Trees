@@ -2,8 +2,9 @@ package com.mrbysco.densetrees.data.data;
 
 import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.registry.DenseRegistry;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -16,12 +17,12 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Consumer;
 
 public class DenseRecipeProvider extends RecipeProvider {
-	public DenseRecipeProvider(DataGenerator gen) {
-		super(gen);
+	public DenseRecipeProvider(PackOutput packOutput) {
+		super(packOutput);
 	}
 
 	@Override
-	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 		planksFromDenseLog(consumer, Blocks.ACACIA_PLANKS, DenseRegistry.DENSE_ACACIA_LOG);
 		planksFromDenseLog(consumer, Blocks.BIRCH_PLANKS, DenseRegistry.DENSE_BIRCH_LOG);
 		planksFromDenseLog(consumer, Blocks.DARK_OAK_PLANKS, DenseRegistry.DENSE_DARK_OAK_LOG);
@@ -44,20 +45,20 @@ public class DenseRecipeProvider extends RecipeProvider {
 	}
 
 	protected static void planksFromDenseLog(Consumer<FinishedRecipe> recipeConsumer, ItemLike planks, RegistryObject<Block> log) {
-		ShapelessRecipeBuilder.shapeless(planks, 64)
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 64)
 				.requires(log.get()).group("planks").unlockedBy("has_log", has(log.get()))
 				.save(recipeConsumer, new ResourceLocation(DenseTrees.MOD_ID, "planks_from_" + log.getId().getPath()));
 	}
 
 	protected static void logsFromDenseLog(Consumer<FinishedRecipe> recipeConsumer, ItemLike log, RegistryObject<Block> denseLog) {
-		ShapedRecipeBuilder.shaped(log, 64)
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
 				.save(recipeConsumer, new ResourceLocation(DenseTrees.MOD_ID, "logs_from_" + denseLog.getId().getPath()));
 	}
 
 	protected static void stemsFromDenseLog(Consumer<FinishedRecipe> recipeConsumer, ItemLike log, RegistryObject<Block> denseLog) {
-		ShapedRecipeBuilder.shaped(log, 64)
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
 				.save(recipeConsumer, new ResourceLocation(DenseTrees.MOD_ID, "stems_from_" + denseLog.getId().getPath()));
