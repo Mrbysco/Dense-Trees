@@ -1,1 +1,1 @@
-* Initial update to 1.19.4 (Skipped 1.19.3 as the biome modifiers weren't working in that version)
+* Fix a potential crash when growing a modded sapling
