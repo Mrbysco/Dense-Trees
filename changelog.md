@@ -1,1 +1,1 @@
-* Add the dense crimson/warped stems to the appropriate block tags
+* Fix a potential crash when growing a modded sapling
