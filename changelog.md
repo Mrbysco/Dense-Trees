@@ -1,1 +1,1 @@
-* Initial update to 1.20
+* Fix a potential crash when growing a modded sapling
