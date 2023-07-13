@@ -20,7 +20,7 @@ public class SaplingHandler {
 	@SubscribeEvent
 	public void saplingGrowEvent(SaplingGrowTreeEvent event) {
 		LevelAccessor levelAccessor = event.getLevel();
-		if (DenseConfig.COMMON.enableSaplingToDenseTree.get() && levelAccessor.getRandom().nextDouble() <= DenseConfig.COMMON.saplingToDenseTreeChance.get()) {
+		if (DenseConfig.COMMON.enableSaplingToDenseTree.get() && levelAccessor.getRandom().nextDouble() <= DenseConfig.COMMON.saplingToDenseTreeChance.get() && event.getFeature() != null) {
 			ResourceKey<? extends ConfiguredFeature<?, ?>> unwrappedKey = event.getFeature().unwrapKey().orElse(null);
 			if (unwrappedKey != null && changeFeatureMap.containsKey(unwrappedKey.location())) {
 				ResourceKey<ConfiguredFeature<?, ?>> denseConfiguredFeature = changeFeatureMap.getOrDefault(unwrappedKey.location(), () -> null).get();
