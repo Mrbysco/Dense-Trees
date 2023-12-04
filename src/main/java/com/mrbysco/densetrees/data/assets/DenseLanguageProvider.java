@@ -3,7 +3,7 @@ package com.mrbysco.densetrees.data.assets;
 import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class DenseLanguageProvider extends LanguageProvider {
 	public DenseLanguageProvider(PackOutput packOutput) {

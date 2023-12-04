@@ -1,21 +1,21 @@
 package com.mrbysco.densetrees.config;
 
 import com.mrbysco.densetrees.DenseTrees;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.event.config.ModConfigEvent;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
 public class DenseConfig {
 	public static class Common {
-		public final ForgeConfigSpec.ConfigValue<List<? extends String>> biomeBlacklist;
+		public final ModConfigSpec.ConfigValue<List<? extends String>> biomeBlacklist;
 
-		public final ForgeConfigSpec.BooleanValue enableSaplingToDenseTree;
-		public final ForgeConfigSpec.DoubleValue saplingToDenseTreeChance;
+		public final ModConfigSpec.BooleanValue enableSaplingToDenseTree;
+		public final ModConfigSpec.DoubleValue saplingToDenseTreeChance;
 
-		Common(ForgeConfigSpec.Builder builder) {
+		Common(ModConfigSpec.Builder builder) {
 			builder.comment("General settings")
 					.push("General");
 
@@ -41,11 +41,11 @@ public class DenseConfig {
 		}
 	}
 
-	public static final ForgeConfigSpec commonSpec;
+	public static final ModConfigSpec commonSpec;
 	public static final Common COMMON;
 
 	static {
-		final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
+		final Pair<Common, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Common::new);
 		commonSpec = specPair.getRight();
 		COMMON = specPair.getLeft();
 	}

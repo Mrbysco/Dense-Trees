@@ -6,9 +6,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class DenseItemModelProvider extends ItemModelProvider {
 	public DenseItemModelProvider(PackOutput packOutput, ExistingFileHelper fileHelper) {
@@ -17,9 +17,9 @@ public class DenseItemModelProvider extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
-		for (RegistryObject<Item> registryObject : DenseRegistry.ITEMS.getEntries()) {
-			if (registryObject.get() instanceof BlockItem blockItem && blockItem.getBlock() instanceof RotatedPillarBlock)
-				withExistingParent(registryObject.getId().getPath(), modLoc("block/" + registryObject.getId().getPath()));
+		for (DeferredHolder<Item, ? extends Item> deferredHolder : DenseRegistry.ITEMS.getEntries()) {
+			if (deferredHolder.get() instanceof BlockItem blockItem && blockItem.getBlock() instanceof RotatedPillarBlock)
+				withExistingParent(deferredHolder.getId().getPath(), modLoc("block/" + deferredHolder.getId().getPath()));
 		}
 	}
 }

@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -34,16 +34,16 @@ public class DenseLootProvider extends LootTableProvider {
 
 		@Override
 		protected void generate() {
-			for (RegistryObject<Block> registryObject : DenseRegistry.BLOCKS.getEntries()) {
-				if (registryObject.get() instanceof RotatedPillarBlock)
-					this.dropSelf(registryObject.get());
+			for (DeferredHolder<Block, ? extends Block> deferredHolder : DenseRegistry.BLOCKS.getEntries()) {
+				if (deferredHolder.get() instanceof RotatedPillarBlock)
+					this.dropSelf(deferredHolder.get());
 			}
 
 		}
 
 		@Override
 		protected Iterable<Block> getKnownBlocks() {
-			return (Iterable<Block>) DenseRegistry.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+			return (Iterable<Block>) DenseRegistry.BLOCKS.getEntries().stream().map(holder -> (Block) holder.get())::iterator;
 		}
 	}
 

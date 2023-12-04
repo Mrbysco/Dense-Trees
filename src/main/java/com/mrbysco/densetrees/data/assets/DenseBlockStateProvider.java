@@ -6,9 +6,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class DenseBlockStateProvider extends BlockStateProvider {
 	public DenseBlockStateProvider(PackOutput packOutput, ExistingFileHelper fileHelper) {
@@ -17,13 +17,13 @@ public class DenseBlockStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		for (RegistryObject<Block> registryObject : DenseRegistry.BLOCKS.getEntries()) {
-			if (registryObject.get() instanceof RotatedPillarBlock)
-				denseLogBlock(registryObject);
+		for (DeferredHolder<Block, ? extends Block> deferredHolder : DenseRegistry.BLOCKS.getEntries()) {
+			if (deferredHolder.get() instanceof RotatedPillarBlock)
+				denseLogBlock(deferredHolder);
 		}
 	}
 
-	public void denseLogBlock(RegistryObject<Block> block) {
+	public void denseLogBlock(DeferredHolder<Block, ? extends Block> block) {
 		String vanillaPath = "block/" + block.getId().getPath().replace("dense_", "");
 		axisBlock((RotatedPillarBlock) block.get(), new ResourceLocation(vanillaPath), new ResourceLocation(vanillaPath + "_top"));
 	}

@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_dense_log",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_dense_log"
     ]
   ],
   "rewards": {

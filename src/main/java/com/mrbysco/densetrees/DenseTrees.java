@@ -7,13 +7,13 @@ import com.mrbysco.densetrees.registry.DenseModifiers;
 import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class DenseTrees {
 		DenseRegistry.ITEMS.register(eventBus);
 		DenseModifiers.BIOME_MODIFIER_SERIALIZERS.register(eventBus);
 
-		MinecraftForge.EVENT_BUS.register(new SaplingHandler());
+		NeoForge.EVENT_BUS.register(new SaplingHandler());
 	}
 
 	private void registerCreativeTab(final BuildCreativeModeTabContentsEvent event) {

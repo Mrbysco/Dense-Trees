@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class DenseBiomeModifiers {
 
@@ -51,7 +51,7 @@ public class DenseBiomeModifiers {
 
 	private static void addDenseVariation(BootstapContext<BiomeModifier> context, HolderGetter<PlacedFeature> placedGetter,
 										  HolderSet.Named<Biome> biomeSet, ResourceKey<PlacedFeature> original, ResourceKey<PlacedFeature> denseKey) {
-		final ResourceKey<BiomeModifier> denseLocation = ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, denseKey.location());
+		final ResourceKey<BiomeModifier> denseLocation = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, denseKey.location());
 		final BiomeModifier addDenseVariationBiomeModifier = new AddDenseVariationBiomeModifier(
 				biomeSet,
 				placedGetter.getOrThrow(original),

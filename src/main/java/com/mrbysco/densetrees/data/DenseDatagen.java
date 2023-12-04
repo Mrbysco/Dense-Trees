@@ -21,13 +21,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.registries.VanillaRegistries;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -42,7 +42,7 @@ public class DenseDatagen {
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if (event.includeServer()) {
-			generator.addProvider(true, new DenseRecipeProvider(packOutput));
+			generator.addProvider(true, new DenseRecipeProvider(packOutput, lookupProvider));
 			generator.addProvider(true, new DenseLootProvider(packOutput));
 			BlockTagsProvider provider;
 			generator.addProvider(true, provider = new DenseBlockTagProvider(packOutput, lookupProvider, helper));
@@ -68,8 +68,8 @@ public class DenseDatagen {
 			DensePlacedFeatures.bootstrap(context);
 			DenseTreePlacements.bootstrap(context);
 		});
-		registryBuilder.add(ForgeRegistries.Keys.BIOME_MODIFIERS, DenseBiomeModifiers::bootstrap);
-		// We need the BIOME registry to be present so we can use a biome tag, doesn't matter that it's empty
+		registryBuilder.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, DenseBiomeModifiers::bootstrap);
+		// We need the BIOME registry to be present, so we can use a biome tag, doesn't matter that it's empty
 		registryBuilder.add(Registries.BIOME, $ -> {
 		});
 		RegistryAccess.Frozen regAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
