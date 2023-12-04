@@ -1,1 +1,1 @@
-* Fix a potential crash when growing a modded sapling
+* Initial update to 1.20.2 (NeoForge)
