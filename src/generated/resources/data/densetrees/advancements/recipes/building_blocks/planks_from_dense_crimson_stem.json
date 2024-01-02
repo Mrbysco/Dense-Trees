@@ -30,6 +30,5 @@
     "recipes": [
       "densetrees:planks_from_dense_crimson_stem"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

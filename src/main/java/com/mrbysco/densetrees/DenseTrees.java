@@ -7,13 +7,12 @@ import com.mrbysco.densetrees.registry.DenseModifiers;
 import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -23,8 +22,7 @@ public class DenseTrees {
 	public static final Logger LOGGER = LogUtils.getLogger();
 	public static final String MOD_ID = "densetrees";
 
-	public DenseTrees() {
-		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+	public DenseTrees(IEventBus eventBus) {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DenseConfig.commonSpec);
 		eventBus.register(DenseConfig.class);
 

@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[1,)"
+loaderVersion="[2,)"
 issueTrackerURL="https://github.com/mrbysco/dense-trees/issues"
 license="MIT"
 
@@ -15,13 +15,13 @@ Adds dense versions of vanilla trees that craft into 64 planks instead of 4.
 credits="TelephaticGrunt for the idea"
 [[dependencies.densetrees]]
 modId="minecraft"
-mandatory=true
-versionRange="[1.20.2,1.21)"
+type="REQUIRED"
+versionRange="[1.20.4,1.21)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.densetrees]]
 modId="neoforge"
-mandatory=true
-versionRange="[20.2.86,)"
+type="REQUIRED"
+versionRange="[20.4.60-beta,)"
 ordering="NONE"
 side="BOTH"

@@ -13,6 +13,7 @@ import com.mrbysco.densetrees.world.DensePlacedFeatures;
 import com.mrbysco.densetrees.world.DenseTreeFeatures;
 import com.mrbysco.densetrees.world.DenseTreePlacements;
 import com.mrbysco.densetrees.world.DenseVegetationFeatures;
+import net.minecraft.core.Cloner;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySetBuilder;
@@ -38,7 +39,7 @@ public class DenseDatagen {
 	public static void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 		PackOutput packOutput = generator.getPackOutput();
-		CompletableFuture<HolderLookup.Provider> lookupProvider = CompletableFuture.supplyAsync(DenseDatagen::getProvider);
+		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if (event.includeServer()) {
@@ -49,7 +50,7 @@ public class DenseDatagen {
 			generator.addProvider(true, new DenseItemTagProvider(packOutput, lookupProvider, provider, helper));
 
 			generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(
-					packOutput, lookupProvider, Set.of(DenseTrees.MOD_ID)));
+					packOutput, CompletableFuture.supplyAsync(DenseDatagen::getProvider), Set.of(DenseTrees.MOD_ID)));
 		}
 		if (event.includeClient()) {
 			generator.addProvider(true, new DenseLanguageProvider(packOutput));
@@ -58,7 +59,7 @@ public class DenseDatagen {
 		}
 	}
 
-	private static HolderLookup.Provider getProvider() {
+	private static RegistrySetBuilder.PatchedRegistries getProvider() {
 		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, context -> {
 			DenseVegetationFeatures.bootstrap(context);
@@ -73,6 +74,8 @@ public class DenseDatagen {
 		registryBuilder.add(Registries.BIOME, $ -> {
 		});
 		RegistryAccess.Frozen regAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup());
+		Cloner.Factory cloner$factory = new Cloner.Factory();
+		net.neoforged.neoforge.registries.DataPackRegistriesHooks.getDataPackRegistriesWithDimensions().forEach(data -> data.runWithArguments(cloner$factory::addCodec));
+		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup(), cloner$factory);
 	}
 }

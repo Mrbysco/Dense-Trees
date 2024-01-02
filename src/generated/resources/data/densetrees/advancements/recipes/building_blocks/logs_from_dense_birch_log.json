@@ -30,6 +30,5 @@
     "recipes": [
       "densetrees:logs_from_dense_birch_log"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

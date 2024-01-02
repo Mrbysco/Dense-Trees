@@ -30,6 +30,5 @@
     "recipes": [
       "densetrees:planks_from_dense_acacia_log"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

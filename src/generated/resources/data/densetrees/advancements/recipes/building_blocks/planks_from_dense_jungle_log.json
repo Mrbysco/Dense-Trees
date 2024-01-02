@@ -30,6 +30,5 @@
     "recipes": [
       "densetrees:planks_from_dense_jungle_log"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
