@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "densetrees:dense_mangrove_log"
-            ]
+            "items": "densetrees:dense_mangrove_log"
           }
         ]
       },

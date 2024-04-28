@@ -5,7 +5,7 @@ import com.mrbysco.densetrees.world.DensePlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
@@ -17,7 +17,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class DenseBiomeModifiers {
 
-	public static void bootstrap(BootstapContext<BiomeModifier> context) {
+	public static void bootstrap(BootstrapContext<BiomeModifier> context) {
 		HolderGetter<Biome> biomeGetter = context.lookup(Registries.BIOME);
 		HolderGetter<PlacedFeature> placedGetter = context.lookup(Registries.PLACED_FEATURE);
 		final HolderSet.Named<Biome> overworld = biomeGetter.getOrThrow(BiomeTags.IS_OVERWORLD);
@@ -49,8 +49,8 @@ public class DenseBiomeModifiers {
 		addDenseVariation(context, placedGetter, nether, TreePlacements.WARPED_FUNGI, DensePlacedFeatures.DENSE_WARPED_FUNGI);
 	}
 
-	private static void addDenseVariation(BootstapContext<BiomeModifier> context, HolderGetter<PlacedFeature> placedGetter,
-										  HolderSet.Named<Biome> biomeSet, ResourceKey<PlacedFeature> original, ResourceKey<PlacedFeature> denseKey) {
+	private static void addDenseVariation(BootstrapContext<BiomeModifier> context, HolderGetter<PlacedFeature> placedGetter,
+	                                      HolderSet.Named<Biome> biomeSet, ResourceKey<PlacedFeature> original, ResourceKey<PlacedFeature> denseKey) {
 		final ResourceKey<BiomeModifier> denseLocation = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, denseKey.location());
 		final BiomeModifier addDenseVariationBiomeModifier = new AddDenseVariationBiomeModifier(
 				biomeSet,

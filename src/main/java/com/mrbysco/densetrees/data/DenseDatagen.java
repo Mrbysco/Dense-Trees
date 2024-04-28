@@ -23,7 +23,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.registries.VanillaRegistries;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -33,7 +33,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class DenseDatagen {
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
@@ -44,7 +44,7 @@ public class DenseDatagen {
 
 		if (event.includeServer()) {
 			generator.addProvider(true, new DenseRecipeProvider(packOutput, lookupProvider));
-			generator.addProvider(true, new DenseLootProvider(packOutput));
+			generator.addProvider(true, new DenseLootProvider(packOutput, lookupProvider));
 			BlockTagsProvider provider;
 			generator.addProvider(true, provider = new DenseBlockTagProvider(packOutput, lookupProvider, helper));
 			generator.addProvider(true, new DenseItemTagProvider(packOutput, lookupProvider, provider, helper));

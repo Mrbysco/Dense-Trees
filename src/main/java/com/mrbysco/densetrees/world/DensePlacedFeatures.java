@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
@@ -53,7 +53,7 @@ public class DensePlacedFeatures {
 	public static final ResourceKey<PlacedFeature> DENSE_WARPED_FUNGI = PlacementUtils.createKey("densetrees:dense_warped_fungi");
 
 
-	public static void bootstrap(BootstapContext<PlacedFeature> context) {
+	public static void bootstrap(BootstrapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> configuredGetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
 		PlacementUtils.register(context, DENSE_DARK_FOREST_VEGETATION, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_DARK_FOREST_VEGETATION), CountPlacement.of(16), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RarityFilter.onAverageOnceEvery(10), BiomeFilter.biome());

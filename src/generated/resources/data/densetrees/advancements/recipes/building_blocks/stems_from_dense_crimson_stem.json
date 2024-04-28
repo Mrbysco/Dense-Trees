@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "densetrees:dense_crimson_stem"
-            ]
+            "items": "densetrees:dense_crimson_stem"
           }
         ]
       },

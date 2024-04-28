@@ -1,10 +1,12 @@
 package com.mrbysco.densetrees.data.data;
 
 import com.mrbysco.densetrees.registry.DenseRegistry;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -12,23 +14,22 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public class DenseLootProvider extends LootTableProvider {
-	public DenseLootProvider(PackOutput packOutput) {
+	public DenseLootProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
 		super(packOutput, Set.of(),
 				List.of(
-						new SubProviderEntry(FarmingBlocks::new, LootContextParamSets.BLOCK)
+						new SubProviderEntry(DenseBlockLoot::new, LootContextParamSets.BLOCK)
 				)
-		);
+		, lookupProvider);
 	}
 
-	private static class FarmingBlocks extends BlockLootSubProvider {
-		protected FarmingBlocks() {
+	private static class DenseBlockLoot extends BlockLootSubProvider {
+		protected DenseBlockLoot() {
 			super(Set.of(), FeatureFlags.REGISTRY.allFlags());
 		}
 
@@ -48,7 +49,7 @@ public class DenseLootProvider extends LootTableProvider {
 	}
 
 	@Override
-	protected void validate(Map<ResourceLocation, LootTable> map, @NotNull ValidationContext validationtracker) {
-		map.forEach((name, table) -> table.validate(validationtracker));
+	protected void validate(WritableRegistry<LootTable> writableregistry, ValidationContext validationcontext, ProblemReporter.Collector problemreporter$collector) {
+		super.validate(writableregistry, validationcontext, problemreporter$collector);
 	}
 }

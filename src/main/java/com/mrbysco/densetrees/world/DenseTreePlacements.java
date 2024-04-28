@@ -3,7 +3,7 @@ package com.mrbysco.densetrees.world;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
@@ -48,7 +48,7 @@ public class DenseTreePlacements {
 	public static final ResourceKey<PlacedFeature> DENSE_CHERRY_CHECKED = PlacementUtils.createKey("densetrees:dense_cherry_checked");
 	public static final ResourceKey<PlacedFeature> DENSE_CHERRY_BEES_005 = PlacementUtils.createKey("densetrees:dense_cherry_bees_005");
 
-	public static void bootstrap(BootstapContext<PlacedFeature> context) {
+	public static void bootstrap(BootstrapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> configuredGetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
 		PlacementUtils.register(context, DENSE_OAK_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_OAK), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));

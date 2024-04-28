@@ -5,7 +5,7 @@ import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -106,7 +106,7 @@ public class DenseTreeFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_WARPED_FUNGUS = FeatureUtils.createKey("densetrees:dense_warped_fungus");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_WARPED_FUNGUS_PLANTED = FeatureUtils.createKey("densetrees:dense_warped_fungus_planted");
 
-	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 		FeatureUtils.register(context, DENSE_OAK, Feature.TREE, createOak().build());
 		FeatureUtils.register(context, DENSE_DARK_OAK, Feature.TREE, (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(DenseRegistry.DENSE_DARK_OAK_LOG.get()), new DarkOakTrunkPlacer(6, 2, 1), BlockStateProvider.simple(Blocks.DARK_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()))).ignoreVines().build());
 		FeatureUtils.register(context, DENSE_BIRCH, Feature.TREE, createBirch().build());

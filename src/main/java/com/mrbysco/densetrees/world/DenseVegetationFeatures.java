@@ -2,7 +2,7 @@ package com.mrbysco.densetrees.world;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -33,7 +33,7 @@ public class DenseVegetationFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TREES_JUNGLE = FeatureUtils.createKey("densetrees:dense_trees_jungle");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MANGROVE_VEGETATION = FeatureUtils.createKey("densetrees:dense_mangrove_vegetation");
 
-	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> configuredGetter = context.lookup(Registries.CONFIGURED_FEATURE);
 		HolderGetter<PlacedFeature> placedGetter = context.lookup(Registries.PLACED_FEATURE);
 

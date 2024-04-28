@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "densetrees:dense_cherry_log"
-            ]
+            "items": "densetrees:dense_cherry_log"
           }
         ]
       },

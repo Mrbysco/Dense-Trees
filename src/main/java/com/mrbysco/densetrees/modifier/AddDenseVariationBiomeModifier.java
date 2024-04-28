@@ -1,6 +1,7 @@
 package com.mrbysco.densetrees.modifier;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mrbysco.densetrees.registry.DenseModifiers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -38,7 +39,7 @@ public record AddDenseVariationBiomeModifier(HolderSet<Biome> biomes, Holder<Pla
 	}
 
 	@Override
-	public Codec<? extends BiomeModifier> codec() {
+	public MapCodec<? extends BiomeModifier> codec() {
 		return DenseModifiers.ADD_DENSE_VARIATION.get();
 	}
 }
