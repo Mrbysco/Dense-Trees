@@ -24,7 +24,7 @@ public class DenseTrees {
 	public static final Logger LOGGER = LogUtils.getLogger();
 	public static final String MOD_ID = "densetrees";
 
-	public DenseTrees(IEventBus eventBus, Dist dist, ModContainer container) {
+	public DenseTrees(IEventBus eventBus, ModContainer container) {
 		container.registerConfig(ModConfig.Type.COMMON, DenseConfig.commonSpec);
 		eventBus.register(DenseConfig.class);
 

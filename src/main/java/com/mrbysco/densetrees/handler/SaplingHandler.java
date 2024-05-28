@@ -7,8 +7,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.neoforged.neoforge.event.level.SaplingGrowTreeEvent;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +18,7 @@ public class SaplingHandler {
 	private static final Map<ResourceLocation, Supplier<ResourceKey<ConfiguredFeature<?, ?>>>> changeFeatureMap = populateMap();
 
 	@SubscribeEvent
-	public void saplingGrowEvent(SaplingGrowTreeEvent event) {
+	public void saplingGrowEvent(BlockGrowFeatureEvent event) {
 		LevelAccessor levelAccessor = event.getLevel();
 		if (DenseConfig.COMMON.enableSaplingToDenseTree.get() && levelAccessor.getRandom().nextDouble() <= DenseConfig.COMMON.saplingToDenseTreeChance.get() && event.getFeature() != null) {
 			ResourceKey<? extends ConfiguredFeature<?, ?>> unwrappedKey = event.getFeature().unwrapKey().orElse(null);
@@ -30,7 +30,7 @@ public class SaplingHandler {
 		}
 	}
 
-	public static Map<ResourceLocation, Supplier<ResourceKey<ConfiguredFeature<?, ?>>>> populateMap() {
+	private static Map<ResourceLocation, Supplier<ResourceKey<ConfiguredFeature<?, ?>>>> populateMap() {
 		Map<ResourceLocation, Supplier<ResourceKey<ConfiguredFeature<?, ?>>>> map = new HashMap<>();
 		map.put(TreeFeatures.OAK.location(), () -> DenseTreeFeatures.DENSE_OAK);
 		map.put(TreeFeatures.DARK_OAK.location(), () -> DenseTreeFeatures.DENSE_DARK_OAK);
