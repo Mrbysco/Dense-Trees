@@ -1,13 +1,16 @@
 package com.mrbysco.densetrees.world;
 
 import com.google.common.collect.ImmutableList;
+import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -69,42 +72,46 @@ public class DenseTreeFeatures {
 	private static final BeehiveDecorator BEEHIVE_005 = new BeehiveDecorator(0.05F);
 	private static final BeehiveDecorator BEEHIVE = new BeehiveDecorator(1.0F);
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK = FeatureUtils.createKey("densetrees:dense_oak");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_DARK_OAK = FeatureUtils.createKey("densetrees:dense_dark_oak");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH = FeatureUtils.createKey("densetrees:dense_birch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_ACACIA = FeatureUtils.createKey("densetrees:dense_acacia");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SPRUCE = FeatureUtils.createKey("densetrees:dense_spruce");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_PINE = FeatureUtils.createKey("densetrees:dense_pine");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_TREE = FeatureUtils.createKey("densetrees:dense_jungle_tree");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK = FeatureUtils.createKey("densetrees:dense_fancy_oak");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_TREE_NO_VINE = FeatureUtils.createKey("densetrees:dense_jungle_tree_no_vine");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MEGA_JUNGLE_TREE = FeatureUtils.createKey("densetrees:dense_mega_jungle_tree");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MEGA_SPRUCE = FeatureUtils.createKey("densetrees:dense_mega_spruce");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MEGA_PINE = FeatureUtils.createKey("densetrees:dense_mega_pine");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SUPER_BIRCH_BEES_0002 = FeatureUtils.createKey("densetrees:dense_super_birch_bees_0002");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SUPER_BIRCH_BEES = FeatureUtils.createKey("densetrees:dense_super_birch_bees");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SWAMP_OAK = FeatureUtils.createKey("densetrees:dense_swamp_oak");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_BUSH = FeatureUtils.createKey("densetrees:dense_jungle_bush");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_AZALEA_TREE = FeatureUtils.createKey("densetrees:dense_azalea_tree");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MANGROVE = FeatureUtils.createKey("densetrees:dense_mangrove");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TALL_MANGROVE = FeatureUtils.createKey("densetrees:dense_tall_mangrove");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BEES_0002 = FeatureUtils.createKey("densetrees:dense_oak_bees_0002");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BEES_002 = FeatureUtils.createKey("densetrees:dense_oak_bees_002");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BEES_005 = FeatureUtils.createKey("densetrees:dense_oak_bees_005");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BEES_0002 = FeatureUtils.createKey("densetrees:dense_birch_bees_0002");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BEES_002 = FeatureUtils.createKey("densetrees:dense_birch_bees_002");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BEES_005 = FeatureUtils.createKey("densetrees:dense_birch_bees_005");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES_0002 = FeatureUtils.createKey("densetrees:dense_fancy_oak_bees_0002");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES_002 = FeatureUtils.createKey("densetrees:dense_fancy_oak_bees_002");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES_005 = FeatureUtils.createKey("densetrees:dense_fancy_oak_bees_005");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES = FeatureUtils.createKey("densetrees:dense_fancy_oak_bees");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY = FeatureUtils.createKey("densetrees:dense_cherry");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY_BEES_005 = FeatureUtils.createKey("densetrees:dense_cherry_bees_005");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK = createConfiguredKey("dense_oak");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_DARK_OAK = createConfiguredKey("dense_dark_oak");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH = createConfiguredKey("dense_birch");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_ACACIA = createConfiguredKey("dense_acacia");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SPRUCE = createConfiguredKey("dense_spruce");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_PINE = createConfiguredKey("dense_pine");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_TREE = createConfiguredKey("dense_jungle_tree");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK = createConfiguredKey("dense_fancy_oak");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_TREE_NO_VINE = createConfiguredKey("dense_jungle_tree_no_vine");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MEGA_JUNGLE_TREE = createConfiguredKey("dense_mega_jungle_tree");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MEGA_SPRUCE = createConfiguredKey("dense_mega_spruce");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MEGA_PINE = createConfiguredKey("dense_mega_pine");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SUPER_BIRCH_BEES_0002 = createConfiguredKey("dense_super_birch_bees_0002");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SUPER_BIRCH_BEES = createConfiguredKey("dense_super_birch_bees");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SWAMP_OAK = createConfiguredKey("dense_swamp_oak");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_BUSH = createConfiguredKey("dense_jungle_bush");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_AZALEA_TREE = createConfiguredKey("dense_azalea_tree");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MANGROVE = createConfiguredKey("dense_mangrove");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TALL_MANGROVE = createConfiguredKey("dense_tall_mangrove");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BEES_0002 = createConfiguredKey("dense_oak_bees_0002");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BEES_002 = createConfiguredKey("dense_oak_bees_002");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BEES_005 = createConfiguredKey("dense_oak_bees_005");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BEES_0002 = createConfiguredKey("dense_birch_bees_0002");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BEES_002 = createConfiguredKey("dense_birch_bees_002");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BEES_005 = createConfiguredKey("dense_birch_bees_005");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES_0002 = createConfiguredKey("dense_fancy_oak_bees_0002");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES_002 = createConfiguredKey("dense_fancy_oak_bees_002");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES_005 = createConfiguredKey("dense_fancy_oak_bees_005");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_FANCY_OAK_BEES = createConfiguredKey("dense_fancy_oak_bees");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY = createConfiguredKey("dense_cherry");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY_BEES_005 = createConfiguredKey("dense_cherry_bees_005");
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CRIMSON_FUNGUS = FeatureUtils.createKey("densetrees:dense_crimson_fungus");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CRIMSON_FUNGUS_PLANTED = FeatureUtils.createKey("densetrees:dense_crimson_fungus_planted");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_WARPED_FUNGUS = FeatureUtils.createKey("densetrees:dense_warped_fungus");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_WARPED_FUNGUS_PLANTED = FeatureUtils.createKey("densetrees:dense_warped_fungus_planted");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CRIMSON_FUNGUS = createConfiguredKey("dense_crimson_fungus");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CRIMSON_FUNGUS_PLANTED = createConfiguredKey("dense_crimson_fungus_planted");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_WARPED_FUNGUS = createConfiguredKey("dense_warped_fungus");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_WARPED_FUNGUS_PLANTED = createConfiguredKey("dense_warped_fungus_planted");
+
+	public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredKey(String key) {
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, key));
+	}
 
 	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 		FeatureUtils.register(context, DENSE_OAK, Feature.TREE, createOak().build());

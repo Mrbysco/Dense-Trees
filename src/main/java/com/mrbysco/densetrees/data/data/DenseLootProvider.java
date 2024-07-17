@@ -25,12 +25,12 @@ public class DenseLootProvider extends LootTableProvider {
 				List.of(
 						new SubProviderEntry(DenseBlockLoot::new, LootContextParamSets.BLOCK)
 				)
-		, lookupProvider);
+				, lookupProvider);
 	}
 
 	private static class DenseBlockLoot extends BlockLootSubProvider {
-		protected DenseBlockLoot() {
-			super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+		protected DenseBlockLoot(HolderLookup.Provider provider) {
+			super(Set.of(), FeatureFlags.REGISTRY.allFlags(), provider);
 		}
 
 		@Override

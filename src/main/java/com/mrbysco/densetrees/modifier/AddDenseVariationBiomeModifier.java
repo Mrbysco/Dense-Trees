@@ -1,6 +1,5 @@
 package com.mrbysco.densetrees.modifier;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mrbysco.densetrees.registry.DenseModifiers;
 import net.minecraft.core.Holder;
@@ -15,7 +14,7 @@ import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
 import java.util.List;
 
 public record AddDenseVariationBiomeModifier(HolderSet<Biome> biomes, Holder<PlacedFeature> original,
-											 Holder<PlacedFeature> dense) implements BiomeModifier {
+                                             Holder<PlacedFeature> dense) implements BiomeModifier {
 	@Override
 	public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
 		if (phase == Phase.ADD && this.biomes.contains(biome)) {

@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class DenseBlockTagProvider extends BlockTagsProvider {
 	public DenseBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-								 @Nullable ExistingFileHelper existingFileHelper) {
+	                             @Nullable ExistingFileHelper existingFileHelper) {
 		super(output, lookupProvider, DenseTrees.MOD_ID, existingFileHelper);
 	}
 

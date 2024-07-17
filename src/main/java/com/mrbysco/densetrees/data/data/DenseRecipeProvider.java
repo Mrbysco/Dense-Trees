@@ -50,21 +50,21 @@ public class DenseRecipeProvider extends RecipeProvider {
 	protected static void planksFromDenseLog(RecipeOutput recipeOutput, ItemLike planks, DeferredHolder<Block, ? extends Block> log) {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 64)
 				.requires(log.get()).group("planks").unlockedBy("has_log", has(log.get()))
-				.save(recipeOutput, new ResourceLocation(DenseTrees.MOD_ID, "planks_from_" + log.getId().getPath()));
+				.save(recipeOutput, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "planks_from_" + log.getId().getPath()));
 	}
 
 	protected static void logsFromDenseLog(RecipeOutput recipeOutput, ItemLike log, DeferredHolder<Block, ? extends Block> denseLog) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
-				.save(recipeOutput, new ResourceLocation(DenseTrees.MOD_ID, "logs_from_" + denseLog.getId().getPath()));
+				.save(recipeOutput, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "logs_from_" + denseLog.getId().getPath()));
 	}
 
 	protected static void stemsFromDenseLog(RecipeOutput recipeOutput, ItemLike log, DeferredHolder<Block, ? extends Block> denseLog) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
-				.save(recipeOutput, new ResourceLocation(DenseTrees.MOD_ID, "stems_from_" + denseLog.getId().getPath()));
+				.save(recipeOutput, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "stems_from_" + denseLog.getId().getPath()));
 	}
 
 }

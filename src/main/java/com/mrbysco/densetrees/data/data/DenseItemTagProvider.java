@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class DenseItemTagProvider extends ItemTagsProvider {
 	public DenseItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-								TagsProvider<Block> blockTagProvider, ExistingFileHelper existingFileHelper) {
+	                            TagsProvider<Block> blockTagProvider, ExistingFileHelper existingFileHelper) {
 		super(output, lookupProvider, blockTagProvider.contentsGetter(), DenseTrees.MOD_ID, existingFileHelper);
 	}
 

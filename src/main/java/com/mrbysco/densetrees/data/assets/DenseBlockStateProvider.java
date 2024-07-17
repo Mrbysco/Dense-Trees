@@ -25,6 +25,6 @@ public class DenseBlockStateProvider extends BlockStateProvider {
 
 	public void denseLogBlock(DeferredHolder<Block, ? extends Block> block) {
 		String vanillaPath = "block/" + block.getId().getPath().replace("dense_", "");
-		axisBlock((RotatedPillarBlock) block.get(), new ResourceLocation(vanillaPath), new ResourceLocation(vanillaPath + "_top"));
+		axisBlock((RotatedPillarBlock) block.get(), ResourceLocation.tryParse(vanillaPath), ResourceLocation.tryParse(vanillaPath + "_top"));
 	}
 }

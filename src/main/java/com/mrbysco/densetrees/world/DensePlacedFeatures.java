@@ -1,12 +1,14 @@
 package com.mrbysco.densetrees.world;
 
 import com.google.common.collect.ImmutableList;
+import com.mrbysco.densetrees.DenseTrees;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -26,32 +28,35 @@ import java.util.List;
 public class DensePlacedFeatures {
 	public static final PlacementModifier TREE_THRESHOLD = SurfaceWaterDepthFilter.forMaxDepth(0);
 
-	public static final ResourceKey<PlacedFeature> DENSE_DARK_FOREST_VEGETATION = PlacementUtils.createKey("densetrees:dense_dark_forest_vegetation");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_PLAINS = PlacementUtils.createKey("densetrees:dense_trees_plains");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_FLOWER_FOREST = PlacementUtils.createKey("densetrees:dense_trees_flower_forest");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_MEADOW = PlacementUtils.createKey("densetrees:dense_trees_meadow");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_TAIGA = PlacementUtils.createKey("densetrees:dense_trees_taiga");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_GROVE = PlacementUtils.createKey("densetrees:dense_trees_grove");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_BADLANDS = PlacementUtils.createKey("densetrees:dense_trees_badlands");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_SNOWY = PlacementUtils.createKey("densetrees:dense_trees_snowy");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_SWAMP = PlacementUtils.createKey("densetrees:dense_trees_swamp");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_WINDSWEPT_SAVANNA = PlacementUtils.createKey("densetrees:dense_trees_windswept_savanna");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_SAVANNA = PlacementUtils.createKey("densetrees:dense_trees_savanna");
-	public static final ResourceKey<PlacedFeature> DENSE_BIRCH_TALL = PlacementUtils.createKey("densetrees:dense_birch_tall");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_BIRCH = PlacementUtils.createKey("densetrees:dense_trees_birch");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_WINDSWEPT_FOREST = PlacementUtils.createKey("densetrees:dense_trees_windswept_forest");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_WINDSWEPT_HILLS = PlacementUtils.createKey("densetrees:dense_trees_windswept_hills");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_WATER = PlacementUtils.createKey("densetrees:dense_trees_water");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_BIRCH_AND_OAK = PlacementUtils.createKey("densetrees:dense_trees_birch_and_oak");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_SPARSE_JUNGLE = PlacementUtils.createKey("densetrees:dense_trees_sparse_jungle");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_OLD_GROWTH_SPRUCE_TAIGA = PlacementUtils.createKey("densetrees:dense_trees_old_growth_spruce_taiga");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_OLD_GROWTH_PINE_TAIGA = PlacementUtils.createKey("densetrees:dense_trees_old_growth_pine_taiga");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_JUNGLE = PlacementUtils.createKey("densetrees:dense_trees_jungle");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_MANGROVE = PlacementUtils.createKey("densetrees:dense_trees_mangrove");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_CHERRY = PlacementUtils.createKey("densetrees:dense_trees_cherry");
-	public static final ResourceKey<PlacedFeature> DENSE_CRIMSON_FUNGI = PlacementUtils.createKey("densetrees:dense_crimson_fungi");
-	public static final ResourceKey<PlacedFeature> DENSE_WARPED_FUNGI = PlacementUtils.createKey("densetrees:dense_warped_fungi");
+	public static final ResourceKey<PlacedFeature> DENSE_DARK_FOREST_VEGETATION = createPlacementKey("dense_dark_forest_vegetation");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_PLAINS = createPlacementKey("dense_trees_plains");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_FLOWER_FOREST = createPlacementKey("dense_trees_flower_forest");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_MEADOW = createPlacementKey("dense_trees_meadow");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_TAIGA = createPlacementKey("dense_trees_taiga");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_GROVE = createPlacementKey("dense_trees_grove");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_BADLANDS = createPlacementKey("dense_trees_badlands");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_SNOWY = createPlacementKey("dense_trees_snowy");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_SWAMP = createPlacementKey("dense_trees_swamp");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_WINDSWEPT_SAVANNA = createPlacementKey("dense_trees_windswept_savanna");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_SAVANNA = createPlacementKey("dense_trees_savanna");
+	public static final ResourceKey<PlacedFeature> DENSE_BIRCH_TALL = createPlacementKey("dense_birch_tall");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_BIRCH = createPlacementKey("dense_trees_birch");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_WINDSWEPT_FOREST = createPlacementKey("dense_trees_windswept_forest");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_WINDSWEPT_HILLS = createPlacementKey("dense_trees_windswept_hills");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_WATER = createPlacementKey("dense_trees_water");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_BIRCH_AND_OAK = createPlacementKey("dense_trees_birch_and_oak");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_SPARSE_JUNGLE = createPlacementKey("dense_trees_sparse_jungle");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_OLD_GROWTH_SPRUCE_TAIGA = createPlacementKey("dense_trees_old_growth_spruce_taiga");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_OLD_GROWTH_PINE_TAIGA = createPlacementKey("dense_trees_old_growth_pine_taiga");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_JUNGLE = createPlacementKey("dense_trees_jungle");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_MANGROVE = createPlacementKey("dense_trees_mangrove");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_CHERRY = createPlacementKey("dense_trees_cherry");
+	public static final ResourceKey<PlacedFeature> DENSE_CRIMSON_FUNGI = createPlacementKey("dense_crimson_fungi");
+	public static final ResourceKey<PlacedFeature> DENSE_WARPED_FUNGI = createPlacementKey("dense_warped_fungi");
 
+	public static ResourceKey<PlacedFeature> createPlacementKey(String key) {
+		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, key));
+	}
 
 	public static void bootstrap(BootstrapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> configuredGetter = context.lookup(Registries.CONFIGURED_FEATURE);
