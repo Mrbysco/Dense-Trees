@@ -1,1 +1,2 @@
-* Change the loottable of dense logs to drop 16 of their corresponding log type when broken with an axe unless the axe has silk touch
+* Update to 1.21.4
+* Add Dense Pale Oak
