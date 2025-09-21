@@ -17,16 +17,16 @@ public class DenseRegistry {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(DenseTrees.MOD_ID);
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(DenseTrees.MOD_ID);
 
-	public static final DeferredBlock<Block> DENSE_OAK_LOG = BLOCKS.register("dense_oak_log", () -> denseLog(MapColor.WOOD, MapColor.PODZOL));
-	public static final DeferredBlock<Block> DENSE_SPRUCE_LOG = BLOCKS.register("dense_spruce_log", () -> denseLog(MapColor.PODZOL, MapColor.COLOR_BROWN));
-	public static final DeferredBlock<Block> DENSE_BIRCH_LOG = BLOCKS.register("dense_birch_log", () -> denseLog(MapColor.SAND, MapColor.QUARTZ));
-	public static final DeferredBlock<Block> DENSE_JUNGLE_LOG = BLOCKS.register("dense_jungle_log", () -> denseLog(MapColor.DIRT, MapColor.PODZOL));
-	public static final DeferredBlock<Block> DENSE_ACACIA_LOG = BLOCKS.register("dense_acacia_log", () -> denseLog(MapColor.COLOR_ORANGE, MapColor.STONE));
-	public static final DeferredBlock<Block> DENSE_DARK_OAK_LOG = BLOCKS.register("dense_dark_oak_log", () -> denseLog(MapColor.COLOR_BROWN, MapColor.COLOR_BROWN));
-	public static final DeferredBlock<Block> DENSE_MANGROVE_LOG = BLOCKS.register("dense_mangrove_log", () -> denseLog(MapColor.COLOR_RED, MapColor.PODZOL));
-	public static final DeferredBlock<Block> DENSE_CHERRY_LOG = BLOCKS.register("dense_cherry_log", () -> denseLog(MapColor.COLOR_RED, MapColor.PODZOL));
-	public static final DeferredBlock<Block> DENSE_CRIMSON_STEM = BLOCKS.register("dense_crimson_stem", () -> denseNetherStem(MapColor.CRIMSON_STEM));
-	public static final DeferredBlock<Block> DENSE_WARPED_STEM = BLOCKS.register("dense_warped_stem", () -> denseNetherStem(MapColor.CRIMSON_STEM));
+	public static final DeferredBlock<Block> DENSE_OAK_LOG = BLOCKS.registerBlock("dense_oak_log", (properties) -> denseLog(properties, MapColor.WOOD, MapColor.PODZOL));
+	public static final DeferredBlock<Block> DENSE_SPRUCE_LOG = BLOCKS.registerBlock("dense_spruce_log", (properties) -> denseLog(properties, MapColor.PODZOL, MapColor.COLOR_BROWN));
+	public static final DeferredBlock<Block> DENSE_BIRCH_LOG = BLOCKS.registerBlock("dense_birch_log", (properties) -> denseLog(properties, MapColor.SAND, MapColor.QUARTZ));
+	public static final DeferredBlock<Block> DENSE_JUNGLE_LOG = BLOCKS.registerBlock("dense_jungle_log", (properties) -> denseLog(properties, MapColor.DIRT, MapColor.PODZOL));
+	public static final DeferredBlock<Block> DENSE_ACACIA_LOG = BLOCKS.registerBlock("dense_acacia_log", (properties) -> denseLog(properties, MapColor.COLOR_ORANGE, MapColor.STONE));
+	public static final DeferredBlock<Block> DENSE_DARK_OAK_LOG = BLOCKS.registerBlock("dense_dark_oak_log", (properties) -> denseLog(properties, MapColor.COLOR_BROWN, MapColor.COLOR_BROWN));
+	public static final DeferredBlock<Block> DENSE_MANGROVE_LOG = BLOCKS.registerBlock("dense_mangrove_log", (properties) -> denseLog(properties, MapColor.COLOR_RED, MapColor.PODZOL));
+	public static final DeferredBlock<Block> DENSE_CHERRY_LOG = BLOCKS.registerBlock("dense_cherry_log", (properties) -> denseLog(properties, MapColor.COLOR_RED, MapColor.PODZOL));
+	public static final DeferredBlock<Block> DENSE_CRIMSON_STEM = BLOCKS.registerBlock("dense_crimson_stem", (properties) -> denseNetherStem(properties, MapColor.CRIMSON_STEM));
+	public static final DeferredBlock<Block> DENSE_WARPED_STEM = BLOCKS.registerBlock("dense_warped_stem", (properties) -> denseNetherStem(properties, MapColor.CRIMSON_STEM));
 
 	public static final DeferredItem<BlockItem> DENSE_OAK_LOG_ITEM = ITEMS.registerSimpleBlockItem(DENSE_OAK_LOG);
 	public static final DeferredItem<BlockItem> DENSE_SPRUCE_LOG_ITEM = ITEMS.registerSimpleBlockItem(DENSE_SPRUCE_LOG);
@@ -40,14 +40,14 @@ public class DenseRegistry {
 	public static final DeferredItem<BlockItem> DENSE_WARPED_STEM_ITEM = ITEMS.registerSimpleBlockItem(DENSE_WARPED_STEM);
 
 
-	private static DenseLogBlock denseLog(MapColor color, MapColor color2) {
-		return new DenseLogBlock(BlockBehaviour.Properties.of().mapColor((state) -> {
+	private static DenseLogBlock denseLog(BlockBehaviour.Properties properties, MapColor color, MapColor color2) {
+		return new DenseLogBlock(properties.mapColor((state) -> {
 			return state.getValue(DenseLogBlock.AXIS) == Direction.Axis.Y ? color : color2;
 		}).instrument(NoteBlockInstrument.BASS).ignitedByLava().strength(4.0F).sound(SoundType.WOOD));
 	}
 
-	private static DenseLogBlock denseNetherStem(MapColor color) {
-		return new DenseLogBlock(BlockBehaviour.Properties.of().mapColor((p_152620_) -> {
+	private static DenseLogBlock denseNetherStem(BlockBehaviour.Properties properties, MapColor color) {
+		return new DenseLogBlock(properties.mapColor((p_152620_) -> {
 			return color;
 		}).strength(4.0F).sound(SoundType.STEM));
 	}
