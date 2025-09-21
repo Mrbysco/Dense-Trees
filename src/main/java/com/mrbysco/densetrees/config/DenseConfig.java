@@ -10,10 +10,11 @@ import java.util.List;
 
 public class DenseConfig {
 	public static class Common {
-		public final ModConfigSpec.ConfigValue<List<? extends String>> biomeBlacklist;
-
 		public final ModConfigSpec.BooleanValue enableSaplingToDenseTree;
 		public final ModConfigSpec.DoubleValue saplingToDenseTreeChance;
+
+		public final ModConfigSpec.ConfigValue<List<? extends String>> biomeBlacklist;
+		public final ModConfigSpec.BooleanValue disableWorldgen;
 
 		Common(ModConfigSpec.Builder builder) {
 			builder.comment("General settings")
@@ -36,6 +37,10 @@ public class DenseConfig {
 			biomeBlacklist = builder
 					.comment("Blacklist biomes from spawning dense trees. (Use the registry name of the biome) Example: \"minecraft:flower_forest\"")
 					.defineListAllowEmpty("biomeBlacklist", () -> List.of(""), String::new, o -> o instanceof String);
+
+			disableWorldgen = builder
+					.comment("Setting this to true will disable dense tree world generation [Default: false]")
+					.define("disableWorldgen", false);
 
 			builder.pop();
 		}

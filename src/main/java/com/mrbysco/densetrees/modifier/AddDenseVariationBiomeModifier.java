@@ -1,6 +1,7 @@
 package com.mrbysco.densetrees.modifier;
 
 import com.mojang.serialization.MapCodec;
+import com.mrbysco.densetrees.config.DenseConfig;
 import com.mrbysco.densetrees.registry.DenseModifiers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -18,6 +19,8 @@ public record AddDenseVariationBiomeModifier(HolderSet<Biome> biomes, Holder<Pla
 	@Override
 	public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
 		if (phase == Phase.ADD && this.biomes.contains(biome)) {
+			if (DenseConfig.COMMON.disableWorldgen.get())
+				return;
 			BiomeGenerationSettingsBuilder generationSettings = builder.getGenerationSettings();
 			boolean hasOriginal = false;
 			List<Holder<PlacedFeature>> featureList = generationSettings.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
@@ -32,9 +35,19 @@ public record AddDenseVariationBiomeModifier(HolderSet<Biome> biomes, Holder<Pla
 
 			if (hasOriginal) {
 //				DenseTrees.LOGGER.debug("Adding dense tree {} to biome {}", dense.unwrapKey().orElseThrow().location(), biome.unwrapKey().orElseThrow().location());
+				if (isBlacklisted(biome))
+					return;
 				generationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, dense);
 			}
 		}
+	}
+
+	private boolean isBlacklisted(Holder<Biome> biome) {
+		var biomeKey = biome.unwrapKey().orElse(null);
+		if (biomeKey != null) {
+			return DenseConfig.COMMON.biomeBlacklist.get().contains(biomeKey.location().toString());
+		}
+		return false;
 	}
 
 	@Override

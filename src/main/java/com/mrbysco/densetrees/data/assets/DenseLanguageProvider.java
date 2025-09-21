@@ -29,6 +29,7 @@ public class DenseLanguageProvider extends LanguageProvider {
 		addConfig("saplingToDenseTreeChance", "Sapling to Dense Tree Chance", "Chance of a sapling turning into a dense tree. (0.05 = 5%)");
 		addConfig("Biome", "Biome", "Biome Settings");
 		addConfig("biomeBlacklist", "Biome Blacklist", "Blacklist biomes from spawning dense trees. (Use the registry name of the biome) Example: \"minecraft:flower_forest\"");
+		addConfig("disableWorldgen", "Disable Worldgen", "Setting this to true will disable dense tree world generation");
 	}
 
 	/**
