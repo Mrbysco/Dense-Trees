@@ -53,13 +53,13 @@ public class SaplingHandler {
 		map.put(TreeFeatures.TALL_MANGROVE.location(), () -> DenseTreeFeatures.DENSE_TALL_MANGROVE);
 		map.put(TreeFeatures.CHERRY.location(), () -> DenseTreeFeatures.DENSE_CHERRY);
 		map.put(TreeFeatures.CHERRY_BEES_005.location(), () -> DenseTreeFeatures.DENSE_CHERRY_BEES_005);
-		map.put(TreeFeatures.OAK_BEES_0002.location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_0002);
+		map.put(TreeFeatures.OAK_BEES_0002_LEAF_LITTER.location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_0002_LEAF_LITTER);
 		map.put(TreeFeatures.OAK_BEES_002.location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_002);
 		map.put(TreeFeatures.OAK_BEES_005.location(), () -> DenseTreeFeatures.DENSE_OAK_BEES_005);
 		map.put(TreeFeatures.BIRCH_BEES_0002.location(), () -> DenseTreeFeatures.DENSE_BIRCH_BEES_0002);
 		map.put(TreeFeatures.BIRCH_BEES_002.location(), () -> DenseTreeFeatures.DENSE_BIRCH_BEES_002);
 		map.put(TreeFeatures.BIRCH_BEES_005.location(), () -> DenseTreeFeatures.DENSE_BIRCH_BEES_005);
-		map.put(TreeFeatures.FANCY_OAK_BEES_0002.location(), () -> DenseTreeFeatures.DENSE_FANCY_OAK_BEES_0002);
+		map.put(TreeFeatures.FANCY_OAK_BEES_0002_LEAF_LITTER.location(), () -> DenseTreeFeatures.DENSE_FANCY_OAK_BEES_0002_LEAF_LITTER);
 		map.put(TreeFeatures.FANCY_OAK_BEES_002.location(), () -> DenseTreeFeatures.DENSE_FANCY_OAK_BEES_002);
 		map.put(TreeFeatures.FANCY_OAK_BEES_005.location(), () -> DenseTreeFeatures.DENSE_FANCY_OAK_BEES_005);
 		map.put(TreeFeatures.FANCY_OAK_BEES.location(), () -> DenseTreeFeatures.DENSE_FANCY_OAK_BEES);

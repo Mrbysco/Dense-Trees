@@ -38,7 +38,7 @@ public class DenseBiomeModifiers {
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_WINDSWEPT_HILLS, DensePlacedFeatures.DENSE_TREES_WINDSWEPT_HILLS);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_WATER, DensePlacedFeatures.DENSE_TREES_WATER);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_PLAINS, DensePlacedFeatures.DENSE_TREES_PLAINS);
-		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_BIRCH_AND_OAK, DensePlacedFeatures.DENSE_TREES_BIRCH_AND_OAK);
+		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_BIRCH_AND_OAK_LEAF_LITTER, DensePlacedFeatures.DENSE_TREES_BIRCH_AND_OAK_LEAF_LITTER);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_SPARSE_JUNGLE, DensePlacedFeatures.DENSE_TREES_SPARSE_JUNGLE);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_OLD_GROWTH_SPRUCE_TAIGA, DensePlacedFeatures.DENSE_TREES_OLD_GROWTH_SPRUCE_TAIGA);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_OLD_GROWTH_PINE_TAIGA, DensePlacedFeatures.DENSE_TREES_OLD_GROWTH_PINE_TAIGA);

@@ -45,7 +45,7 @@ public class DensePlacedFeatures {
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_WINDSWEPT_FOREST = createPlacementKey("dense_trees_windswept_forest");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_WINDSWEPT_HILLS = createPlacementKey("dense_trees_windswept_hills");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_WATER = createPlacementKey("dense_trees_water");
-	public static final ResourceKey<PlacedFeature> DENSE_TREES_BIRCH_AND_OAK = createPlacementKey("dense_trees_birch_and_oak");
+	public static final ResourceKey<PlacedFeature> DENSE_TREES_BIRCH_AND_OAK_LEAF_LITTER = createPlacementKey("dense_trees_birch_and_oak");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_SPARSE_JUNGLE = createPlacementKey("dense_trees_sparse_jungle");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_OLD_GROWTH_SPRUCE_TAIGA = createPlacementKey("dense_trees_old_growth_spruce_taiga");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_OLD_GROWTH_PINE_TAIGA = createPlacementKey("dense_trees_old_growth_pine_taiga");
@@ -79,7 +79,7 @@ public class DensePlacedFeatures {
 		PlacementUtils.register(context, DENSE_TREES_WINDSWEPT_FOREST, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_WINDSWEPT_HILLS), denseTreePlacement(PlacementUtils.countExtra(3, 0.1F, 1)));
 		PlacementUtils.register(context, DENSE_TREES_WINDSWEPT_HILLS, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_WINDSWEPT_HILLS), denseTreePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
 		PlacementUtils.register(context, DENSE_TREES_WATER, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_WATER), denseTreePlacement(PlacementUtils.countExtra(0, 0.1F, 1)));
-		PlacementUtils.register(context, DENSE_TREES_BIRCH_AND_OAK, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_BIRCH_AND_OAK), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
+		PlacementUtils.register(context, DENSE_TREES_BIRCH_AND_OAK_LEAF_LITTER, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_BIRCH_AND_OAK_LEAF_LITTER), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 		PlacementUtils.register(context, DENSE_TREES_SPARSE_JUNGLE, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_SPARSE_JUNGLE), denseTreePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
 		PlacementUtils.register(context, DENSE_TREES_OLD_GROWTH_SPRUCE_TAIGA, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_OLD_GROWTH_SPRUCE_TAIGA), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 		PlacementUtils.register(context, DENSE_TREES_OLD_GROWTH_PINE_TAIGA, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_OLD_GROWTH_PINE_TAIGA), denseTreePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
