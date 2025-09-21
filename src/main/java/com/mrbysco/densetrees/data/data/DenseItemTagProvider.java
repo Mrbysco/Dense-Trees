@@ -4,17 +4,17 @@ import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.data.ItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
 
 public class DenseItemTagProvider extends ItemTagsProvider {
 	public DenseItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
 	                            TagsProvider<Block> blockTagProvider) {
-		super(output, lookupProvider, blockTagProvider.contentsGetter(), DenseTrees.MOD_ID);
+		super(output, lookupProvider, DenseTrees.MOD_ID);
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class DenseItemTagProvider extends ItemTagsProvider {
 		this.tag(ItemTags.MANGROVE_LOGS).add(DenseRegistry.DENSE_MANGROVE_LOG.asItem());
 		this.tag(ItemTags.CHERRY_LOGS).add(DenseRegistry.DENSE_CHERRY_LOG.asItem());
 		this.tag(ItemTags.PALE_OAK_LOGS).add(DenseRegistry.DENSE_PALE_OAK_LOG.asItem());
-		this.tag(ItemTags.CRIMSON_STEMS).add(DenseRegistry.DENSE_CRIMSON_STEM_ITEM.get());
-		this.tag(ItemTags.WARPED_STEMS).add(DenseRegistry.DENSE_WARPED_STEM_ITEM.get());
-		this.tag(ItemTags.NON_FLAMMABLE_WOOD).add(DenseRegistry.DENSE_CRIMSON_STEM_ITEM.get(), DenseRegistry.DENSE_WARPED_STEM_ITEM.get());
+		this.tag(ItemTags.CRIMSON_STEMS).add(DenseRegistry.DENSE_CRIMSON_STEM.asItem());
+		this.tag(ItemTags.WARPED_STEMS).add(DenseRegistry.DENSE_WARPED_STEM.asItem());
+		this.tag(ItemTags.NON_FLAMMABLE_WOOD).add(DenseRegistry.DENSE_CRIMSON_STEM.asItem(), DenseRegistry.DENSE_WARPED_STEM.asItem());
 	}
 }
