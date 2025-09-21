@@ -19,6 +19,7 @@ public class DenseLanguageProvider extends LanguageProvider {
 		addBlock(DenseRegistry.DENSE_JUNGLE_LOG, "Dense Jungle Log");
 		addBlock(DenseRegistry.DENSE_ACACIA_LOG, "Dense Acacia Log");
 		addBlock(DenseRegistry.DENSE_DARK_OAK_LOG, "Dense Dark Oak Log");
+		addBlock(DenseRegistry.DENSE_PALE_OAK_LOG, "Dense Pale Oak Log");
 		addBlock(DenseRegistry.DENSE_MANGROVE_LOG, "Dense Mangrove Log");
 		addBlock(DenseRegistry.DENSE_CHERRY_LOG, "Dense Cherry Log");
 		addBlock(DenseRegistry.DENSE_CRIMSON_STEM, "Dense Crimson Stem");

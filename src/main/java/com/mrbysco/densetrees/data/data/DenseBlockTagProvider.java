@@ -6,32 +6,31 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
 public class DenseBlockTagProvider extends BlockTagsProvider {
-	public DenseBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-	                             @Nullable ExistingFileHelper existingFileHelper) {
-		super(output, lookupProvider, DenseTrees.MOD_ID, existingFileHelper);
+	public DenseBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+		super(output, lookupProvider, DenseTrees.MOD_ID);
 	}
 
 	@Override
 	public void addTags(HolderLookup.Provider lookupProvider) {
-		this.tag(BlockTags.LOGS).add(DenseRegistry.DENSE_OAK_LOG.get(), DenseRegistry.DENSE_SPRUCE_LOG.get(),
-				DenseRegistry.DENSE_BIRCH_LOG.get(), DenseRegistry.DENSE_JUNGLE_LOG.get(),
-				DenseRegistry.DENSE_ACACIA_LOG.get(), DenseRegistry.DENSE_DARK_OAK_LOG.get(),
-				DenseRegistry.DENSE_MANGROVE_LOG.get(), DenseRegistry.DENSE_CHERRY_LOG.get());
-		this.tag(BlockTags.LOGS_THAT_BURN).add(DenseRegistry.DENSE_OAK_LOG.get(), DenseRegistry.DENSE_SPRUCE_LOG.get(),
-				DenseRegistry.DENSE_BIRCH_LOG.get(), DenseRegistry.DENSE_JUNGLE_LOG.get(),
-				DenseRegistry.DENSE_ACACIA_LOG.get(), DenseRegistry.DENSE_DARK_OAK_LOG.get(),
-				DenseRegistry.DENSE_MANGROVE_LOG.get(), DenseRegistry.DENSE_CHERRY_LOG.get());
+		this.tag(BlockTags.OAK_LOGS).add(DenseRegistry.DENSE_OAK_LOG.get());
+		this.tag(BlockTags.SPRUCE_LOGS).add(DenseRegistry.DENSE_SPRUCE_LOG.get());
+		this.tag(BlockTags.BIRCH_LOGS).add(DenseRegistry.DENSE_BIRCH_LOG.get());
+		this.tag(BlockTags.JUNGLE_LOGS).add(DenseRegistry.DENSE_JUNGLE_LOG.get());
+		this.tag(BlockTags.ACACIA_LOGS).add(DenseRegistry.DENSE_ACACIA_LOG.get());
+		this.tag(BlockTags.DARK_OAK_LOGS).add(DenseRegistry.DENSE_DARK_OAK_LOG.get());
+		this.tag(BlockTags.MANGROVE_LOGS).add(DenseRegistry.DENSE_MANGROVE_LOG.get());
+		this.tag(BlockTags.CHERRY_LOGS).add(DenseRegistry.DENSE_CHERRY_LOG.get());
+		this.tag(BlockTags.PALE_OAK_LOGS).add(DenseRegistry.DENSE_PALE_OAK_LOG.get());
 		this.tag(BlockTags.CRIMSON_STEMS).add(DenseRegistry.DENSE_CRIMSON_STEM.get());
 		this.tag(BlockTags.WARPED_STEMS).add(DenseRegistry.DENSE_WARPED_STEM.get());
 		this.tag(BlockTags.MINEABLE_WITH_AXE).add(DenseRegistry.DENSE_OAK_LOG.get(), DenseRegistry.DENSE_SPRUCE_LOG.get(),
 				DenseRegistry.DENSE_BIRCH_LOG.get(), DenseRegistry.DENSE_JUNGLE_LOG.get(),
 				DenseRegistry.DENSE_ACACIA_LOG.get(), DenseRegistry.DENSE_DARK_OAK_LOG.get(),
-				DenseRegistry.DENSE_MANGROVE_LOG.get(), DenseRegistry.DENSE_CHERRY_LOG.get());
+				DenseRegistry.DENSE_MANGROVE_LOG.get(), DenseRegistry.DENSE_CHERRY_LOG.get(),
+				DenseRegistry.DENSE_PALE_OAK_LOG.get());
 	}
 }

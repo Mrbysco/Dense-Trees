@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "item": "densetrees:dense_crimson_stem"
-    }
+    "densetrees:dense_crimson_stem"
   ],
   "result": {
     "count": 64,

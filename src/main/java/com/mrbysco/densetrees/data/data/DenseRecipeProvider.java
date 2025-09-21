@@ -7,8 +7,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -18,53 +16,71 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import java.util.concurrent.CompletableFuture;
 
 public class DenseRecipeProvider extends RecipeProvider {
-	public DenseRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-		super(packOutput, lookupProvider);
+	public DenseRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+		super(provider, recipeOutput);
 	}
 
 	@Override
-	protected void buildRecipes(RecipeOutput recipeOutput) {
-		planksFromDenseLog(recipeOutput, Blocks.ACACIA_PLANKS, DenseRegistry.DENSE_ACACIA_LOG);
-		planksFromDenseLog(recipeOutput, Blocks.BIRCH_PLANKS, DenseRegistry.DENSE_BIRCH_LOG);
-		planksFromDenseLog(recipeOutput, Blocks.DARK_OAK_PLANKS, DenseRegistry.DENSE_DARK_OAK_LOG);
-		planksFromDenseLog(recipeOutput, Blocks.JUNGLE_PLANKS, DenseRegistry.DENSE_JUNGLE_LOG);
-		planksFromDenseLog(recipeOutput, Blocks.OAK_PLANKS, DenseRegistry.DENSE_OAK_LOG);
-		planksFromDenseLog(recipeOutput, Blocks.SPRUCE_PLANKS, DenseRegistry.DENSE_SPRUCE_LOG);
-		planksFromDenseLog(recipeOutput, Blocks.MANGROVE_PLANKS, DenseRegistry.DENSE_MANGROVE_LOG);
-		planksFromDenseLog(recipeOutput, Blocks.CHERRY_PLANKS, DenseRegistry.DENSE_CHERRY_LOG);
-		planksFromDenseLog(recipeOutput, Blocks.CRIMSON_PLANKS, DenseRegistry.DENSE_CRIMSON_STEM);
-		planksFromDenseLog(recipeOutput, Blocks.WARPED_PLANKS, DenseRegistry.DENSE_WARPED_STEM);
+	protected void buildRecipes() {
+		planksFromDenseLog(Blocks.ACACIA_PLANKS, DenseRegistry.DENSE_ACACIA_LOG);
+		planksFromDenseLog(Blocks.BIRCH_PLANKS, DenseRegistry.DENSE_BIRCH_LOG);
+		planksFromDenseLog(Blocks.DARK_OAK_PLANKS, DenseRegistry.DENSE_DARK_OAK_LOG);
+		planksFromDenseLog(Blocks.PALE_OAK_PLANKS, DenseRegistry.DENSE_PALE_OAK_LOG);
+		planksFromDenseLog(Blocks.JUNGLE_PLANKS, DenseRegistry.DENSE_JUNGLE_LOG);
+		planksFromDenseLog(Blocks.OAK_PLANKS, DenseRegistry.DENSE_OAK_LOG);
+		planksFromDenseLog(Blocks.SPRUCE_PLANKS, DenseRegistry.DENSE_SPRUCE_LOG);
+		planksFromDenseLog(Blocks.MANGROVE_PLANKS, DenseRegistry.DENSE_MANGROVE_LOG);
+		planksFromDenseLog(Blocks.CHERRY_PLANKS, DenseRegistry.DENSE_CHERRY_LOG);
+		planksFromDenseLog(Blocks.CRIMSON_PLANKS, DenseRegistry.DENSE_CRIMSON_STEM);
+		planksFromDenseLog(Blocks.WARPED_PLANKS, DenseRegistry.DENSE_WARPED_STEM);
 
-		logsFromDenseLog(recipeOutput, Blocks.ACACIA_LOG, DenseRegistry.DENSE_ACACIA_LOG);
-		logsFromDenseLog(recipeOutput, Blocks.BIRCH_LOG, DenseRegistry.DENSE_BIRCH_LOG);
-		logsFromDenseLog(recipeOutput, Blocks.DARK_OAK_LOG, DenseRegistry.DENSE_DARK_OAK_LOG);
-		logsFromDenseLog(recipeOutput, Blocks.JUNGLE_LOG, DenseRegistry.DENSE_JUNGLE_LOG);
-		logsFromDenseLog(recipeOutput, Blocks.OAK_LOG, DenseRegistry.DENSE_OAK_LOG);
-		logsFromDenseLog(recipeOutput, Blocks.SPRUCE_LOG, DenseRegistry.DENSE_SPRUCE_LOG);
-		logsFromDenseLog(recipeOutput, Blocks.MANGROVE_LOG, DenseRegistry.DENSE_MANGROVE_LOG);
-		logsFromDenseLog(recipeOutput, Blocks.CHERRY_LOG, DenseRegistry.DENSE_CHERRY_LOG);
-		stemsFromDenseLog(recipeOutput, Blocks.CRIMSON_STEM, DenseRegistry.DENSE_CRIMSON_STEM);
-		stemsFromDenseLog(recipeOutput, Blocks.WARPED_STEM, DenseRegistry.DENSE_WARPED_STEM);
+		logsFromDenseLog(Blocks.ACACIA_LOG, DenseRegistry.DENSE_ACACIA_LOG);
+		logsFromDenseLog(Blocks.BIRCH_LOG, DenseRegistry.DENSE_BIRCH_LOG);
+		logsFromDenseLog(Blocks.DARK_OAK_LOG, DenseRegistry.DENSE_DARK_OAK_LOG);
+		logsFromDenseLog(Blocks.PALE_OAK_LOG, DenseRegistry.DENSE_PALE_OAK_LOG);
+		logsFromDenseLog(Blocks.JUNGLE_LOG, DenseRegistry.DENSE_JUNGLE_LOG);
+		logsFromDenseLog(Blocks.OAK_LOG, DenseRegistry.DENSE_OAK_LOG);
+		logsFromDenseLog(Blocks.SPRUCE_LOG, DenseRegistry.DENSE_SPRUCE_LOG);
+		logsFromDenseLog(Blocks.MANGROVE_LOG, DenseRegistry.DENSE_MANGROVE_LOG);
+		logsFromDenseLog(Blocks.CHERRY_LOG, DenseRegistry.DENSE_CHERRY_LOG);
+		stemsFromDenseLog(Blocks.CRIMSON_STEM, DenseRegistry.DENSE_CRIMSON_STEM);
+		stemsFromDenseLog(Blocks.WARPED_STEM, DenseRegistry.DENSE_WARPED_STEM);
 	}
 
-	protected static void planksFromDenseLog(RecipeOutput recipeOutput, ItemLike planks, DeferredHolder<Block, ? extends Block> log) {
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 64)
+	protected void planksFromDenseLog(ItemLike planks, DeferredHolder<Block, ? extends Block> log) {
+		shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 64)
 				.requires(log.get()).group("planks").unlockedBy("has_log", has(log.get()))
-				.save(recipeOutput, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "planks_from_" + log.getId().getPath()));
+				.save(this.output, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "planks_from_" + log.getId().getPath()).toString());
 	}
 
-	protected static void logsFromDenseLog(RecipeOutput recipeOutput, ItemLike log, DeferredHolder<Block, ? extends Block> denseLog) {
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
+	protected void logsFromDenseLog(ItemLike log, DeferredHolder<Block, ? extends Block> denseLog) {
+		shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
-				.save(recipeOutput, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "logs_from_" + denseLog.getId().getPath()));
+				.save(this.output, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "logs_from_" + denseLog.getId().getPath()).toString());
 	}
 
-	protected static void stemsFromDenseLog(RecipeOutput recipeOutput, ItemLike log, DeferredHolder<Block, ? extends Block> denseLog) {
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
+	protected void stemsFromDenseLog(ItemLike log, DeferredHolder<Block, ? extends Block> denseLog) {
+		shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
-				.save(recipeOutput, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "stems_from_" + denseLog.getId().getPath()));
+				.save(this.output, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "stems_from_" + denseLog.getId().getPath()).toString());
+	}
+
+	public static class Runner extends RecipeProvider.Runner {
+		public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
+			super(output, completableFuture);
+		}
+
+		@Override
+		protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+			return new DenseRecipeProvider(provider, recipeOutput);
+		}
+
+		@Override
+		public String getName() {
+			return "Dense Trees Recipes";
+		}
 	}
 
 }

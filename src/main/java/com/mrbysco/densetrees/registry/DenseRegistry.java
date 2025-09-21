@@ -4,7 +4,6 @@ import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.block.DenseLogBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -23,6 +22,7 @@ public class DenseRegistry {
 	public static final DeferredBlock<DenseLogBlock> DENSE_JUNGLE_LOG = BLOCKS.registerBlock("dense_jungle_log", (properties) -> denseLog(properties, MapColor.DIRT, MapColor.PODZOL));
 	public static final DeferredBlock<DenseLogBlock> DENSE_ACACIA_LOG = BLOCKS.registerBlock("dense_acacia_log", (properties) -> denseLog(properties, MapColor.COLOR_ORANGE, MapColor.STONE));
 	public static final DeferredBlock<DenseLogBlock> DENSE_DARK_OAK_LOG = BLOCKS.registerBlock("dense_dark_oak_log", (properties) -> denseLog(properties, MapColor.COLOR_BROWN, MapColor.COLOR_BROWN));
+	public static final DeferredBlock<DenseLogBlock> DENSE_PALE_OAK_LOG = BLOCKS.registerBlock("dense_pale_oak_log", (properties) -> denseLog(properties, MapColor.QUARTZ, MapColor.QUARTZ));
 	public static final DeferredBlock<DenseLogBlock> DENSE_MANGROVE_LOG = BLOCKS.registerBlock("dense_mangrove_log", (properties) -> denseLog(properties, MapColor.COLOR_RED, MapColor.PODZOL));
 	public static final DeferredBlock<DenseLogBlock> DENSE_CHERRY_LOG = BLOCKS.registerBlock("dense_cherry_log", (properties) -> denseLog(properties, MapColor.COLOR_RED, MapColor.PODZOL));
 	public static final DeferredBlock<DenseLogBlock> DENSE_CRIMSON_STEM = BLOCKS.registerBlock("dense_crimson_stem", (properties) -> denseNetherStem(properties, MapColor.CRIMSON_STEM));
@@ -34,6 +34,7 @@ public class DenseRegistry {
 	public static final DeferredItem<BlockItem> DENSE_JUNGLE_LOG_ITEM = ITEMS.registerSimpleBlockItem(DENSE_JUNGLE_LOG);
 	public static final DeferredItem<BlockItem> DENSE_ACACIA_LOG_ITEM = ITEMS.registerSimpleBlockItem(DENSE_ACACIA_LOG);
 	public static final DeferredItem<BlockItem> DENSE_DARK_OAK_LOG_ITEM = ITEMS.registerSimpleBlockItem(DENSE_DARK_OAK_LOG);
+	public static final DeferredItem<BlockItem> DENSE_PALE_OAK_LOG_ITEM = ITEMS.registerSimpleBlockItem(DENSE_PALE_OAK_LOG);
 	public static final DeferredItem<BlockItem> DENSE_MANGROVE_LOG_ITEM = ITEMS.registerSimpleBlockItem(DENSE_MANGROVE_LOG);
 	public static final DeferredItem<BlockItem> DENSE_CHERRY_LOG_ITEM = ITEMS.registerSimpleBlockItem(DENSE_CHERRY_LOG);
 	public static final DeferredItem<BlockItem> DENSE_CRIMSON_STEM_ITEM = ITEMS.registerSimpleBlockItem(DENSE_CRIMSON_STEM);

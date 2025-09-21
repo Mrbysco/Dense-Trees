@@ -29,6 +29,7 @@ public class DensePlacedFeatures {
 	public static final PlacementModifier TREE_THRESHOLD = SurfaceWaterDepthFilter.forMaxDepth(0);
 
 	public static final ResourceKey<PlacedFeature> DENSE_DARK_FOREST_VEGETATION = createPlacementKey("dense_dark_forest_vegetation");
+	public static final ResourceKey<PlacedFeature> DENSE_PALE_GARDEN_VEGETATION = createPlacementKey("dense_pale_garden_vegetation");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_PLAINS = createPlacementKey("dense_trees_plains");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_FLOWER_FOREST = createPlacementKey("dense_trees_flower_forest");
 	public static final ResourceKey<PlacedFeature> DENSE_TREES_MEADOW = createPlacementKey("dense_trees_meadow");
@@ -62,6 +63,7 @@ public class DensePlacedFeatures {
 		HolderGetter<ConfiguredFeature<?, ?>> configuredGetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
 		PlacementUtils.register(context, DENSE_DARK_FOREST_VEGETATION, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_DARK_FOREST_VEGETATION), CountPlacement.of(16), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RarityFilter.onAverageOnceEvery(10), BiomeFilter.biome());
+		PlacementUtils.register(context, DENSE_PALE_GARDEN_VEGETATION, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_PALE_GARDEN_VEGETATION), CountPlacement.of(16), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
 		PlacementUtils.register(context, DENSE_TREES_PLAINS, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_PLAINS), PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RarityFilter.onAverageOnceEvery(10), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
 		PlacementUtils.register(context, DENSE_TREES_FLOWER_FOREST, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_TREES_FLOWER_FOREST), denseTreePlacement(PlacementUtils.countExtra(6, 0.1F, 1)));
 		PlacementUtils.register(context, DENSE_TREES_MEADOW, configuredGetter.getOrThrow(DenseVegetationFeatures.DENSE_MEADOW_TREES), denseTreePlacement(RarityFilter.onAverageOnceEvery(100)));

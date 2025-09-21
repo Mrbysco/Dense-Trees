@@ -44,6 +44,7 @@ public class DenseLootProvider extends LootTableProvider {
 			dropLogsWithSilkTouch(DenseRegistry.DENSE_JUNGLE_LOG, Blocks.JUNGLE_LOG);
 			dropLogsWithSilkTouch(DenseRegistry.DENSE_ACACIA_LOG, Blocks.ACACIA_LOG);
 			dropLogsWithSilkTouch(DenseRegistry.DENSE_DARK_OAK_LOG, Blocks.DARK_OAK_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_PALE_OAK_LOG, Blocks.PALE_OAK_LOG);
 			dropLogsWithSilkTouch(DenseRegistry.DENSE_MANGROVE_LOG, Blocks.MANGROVE_LOG);
 			dropLogsWithSilkTouch(DenseRegistry.DENSE_CHERRY_LOG, Blocks.CHERRY_LOG);
 			dropLogsWithSilkTouch(DenseRegistry.DENSE_CRIMSON_STEM, Blocks.CRIMSON_STEM);

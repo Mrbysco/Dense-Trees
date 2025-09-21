@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "item": "densetrees:dense_oak_log"
-    }
+    "densetrees:dense_oak_log"
   ],
   "result": {
     "count": 64,

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "item": "densetrees:dense_acacia_log"
-    }
+    "densetrees:dense_acacia_log"
   ],
   "result": {
     "count": 64,

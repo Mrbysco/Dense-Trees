@@ -34,6 +34,7 @@ public class DenseVegetationFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TREES_OLD_GROWTH_PINE_TAIGA = createConfiguredKey("dense_trees_old_growth_pine_taiga");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TREES_JUNGLE = createConfiguredKey("dense_trees_jungle");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MANGROVE_VEGETATION = createConfiguredKey("dense_mangrove_vegetation");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_PALE_GARDEN_VEGETATION = createConfiguredKey("dense_pale_garden_vegetation");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredKey(String key) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, key));
@@ -59,5 +60,7 @@ public class DenseVegetationFeatures {
 		FeatureUtils.register(context, DENSE_TREES_OLD_GROWTH_PINE_TAIGA, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_MEGA_SPRUCE_CHECKED), 0.025641026F), new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_MEGA_PINE_CHECKED), 0.30769232F), new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_PINE_CHECKED), 0.33333334F)), placedGetter.getOrThrow(DenseTreePlacements.DENSE_SPRUCE_CHECKED)));
 		FeatureUtils.register(context, DENSE_TREES_JUNGLE, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_FANCY_OAK_CHECKED), 0.1F), new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_JUNGLE_BUSH), 0.5F), new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_MEGA_JUNGLE_TREE_CHECKED), 0.33333334F)), placedGetter.getOrThrow(DenseTreePlacements.DENSE_JUNGLE_TREE_CHECKED)));
 		FeatureUtils.register(context, DENSE_MANGROVE_VEGETATION, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_TALL_MANGROVE_CHECKED), 0.85F)), placedGetter.getOrThrow(DenseTreePlacements.DENSE_MANGROVE_CHECKED)));
+		FeatureUtils.register(context, DENSE_PALE_GARDEN_VEGETATION, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_PALE_OAK_CREAKING_CHECKED), 0.1F), new WeightedPlacedFeature(placedGetter.getOrThrow(DenseTreePlacements.DENSE_PALE_OAK_CHECKED), 0.9F)), placedGetter.getOrThrow(DenseTreePlacements.DENSE_PALE_OAK_CHECKED)));
+
 	}
 }

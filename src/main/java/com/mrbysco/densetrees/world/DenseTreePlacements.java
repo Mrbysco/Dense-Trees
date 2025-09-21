@@ -19,7 +19,7 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import java.util.List;
 
 public class DenseTreePlacements {
-	public static final BlockPredicate SNOW_TREE_PREDICATE = BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.SNOW_BLOCK, Blocks.POWDER_SNOW);
+	public static final BlockPredicate SNOW_TREE_PREDICATE = BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.SNOW_BLOCK, Blocks.POWDER_SNOW);
 	public static final List<PlacementModifier> SNOW_TREE_FILTER_DECORATOR = List.of(EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.POWDER_SNOW)), 8), BlockPredicateFilter.forPredicate(SNOW_TREE_PREDICATE));
 
 	public static final ResourceKey<PlacedFeature> DENSE_OAK_CHECKED = createPlacementKey("dense_oak_checked");
@@ -49,6 +49,8 @@ public class DenseTreePlacements {
 	public static final ResourceKey<PlacedFeature> DENSE_FANCY_OAK_BEES = createPlacementKey("dense_fancy_oak_bees");
 	public static final ResourceKey<PlacedFeature> DENSE_CHERRY_CHECKED = createPlacementKey("dense_cherry_checked");
 	public static final ResourceKey<PlacedFeature> DENSE_CHERRY_BEES_005 = createPlacementKey("dense_cherry_bees_005");
+	public static final ResourceKey<PlacedFeature> DENSE_PALE_OAK_CHECKED = createPlacementKey("dense_pale_oak_checked");
+	public static final ResourceKey<PlacedFeature> DENSE_PALE_OAK_CREAKING_CHECKED = createPlacementKey("dense_pale_oak_creaking_checked");
 
 	public static ResourceKey<PlacedFeature> createPlacementKey(String key) {
 		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, key));
@@ -84,5 +86,8 @@ public class DenseTreePlacements {
 		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
 		PlacementUtils.register(context, DENSE_CHERRY_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_CHERRY), PlacementUtils.filteredByBlockSurvival(Blocks.CHERRY_SAPLING));
 		PlacementUtils.register(context, DENSE_CHERRY_BEES_005, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_CHERRY_BEES_005), PlacementUtils.filteredByBlockSurvival(Blocks.CHERRY_SAPLING));
+		PlacementUtils.register(context, DENSE_PALE_OAK_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_PALE_OAK), PlacementUtils.filteredByBlockSurvival(Blocks.PALE_OAK_SAPLING));
+		PlacementUtils.register(context, DENSE_PALE_OAK_CREAKING_CHECKED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_PALE_OAK_CREAKING), PlacementUtils.filteredByBlockSurvival(Blocks.PALE_OAK_SAPLING));
+
 	}
 }

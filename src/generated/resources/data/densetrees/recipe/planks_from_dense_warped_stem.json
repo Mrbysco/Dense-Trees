@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "item": "densetrees:dense_warped_stem"
-    }
+    "densetrees:dense_warped_stem"
   ],
   "result": {
     "count": 64,

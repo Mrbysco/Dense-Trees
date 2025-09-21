@@ -22,6 +22,7 @@ public class DenseBiomeModifiers {
 		HolderGetter<PlacedFeature> placedGetter = context.lookup(Registries.PLACED_FEATURE);
 		final HolderSet.Named<Biome> overworld = biomeGetter.getOrThrow(BiomeTags.IS_OVERWORLD);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.DARK_FOREST_VEGETATION, DensePlacedFeatures.DENSE_DARK_FOREST_VEGETATION);
+		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.PALE_GARDEN_VEGETATION, DensePlacedFeatures.DENSE_PALE_GARDEN_VEGETATION);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_FLOWER_FOREST, DensePlacedFeatures.DENSE_TREES_FLOWER_FOREST);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_MEADOW, DensePlacedFeatures.DENSE_TREES_MEADOW);
 		addDenseVariation(context, placedGetter, overworld, VegetationPlacements.TREES_TAIGA, DensePlacedFeatures.DENSE_TREES_TAIGA);

@@ -65,6 +65,10 @@ public class SaplingHandler {
 		map.put(TreeFeatures.FANCY_OAK_BEES.location(), () -> DenseTreeFeatures.DENSE_FANCY_OAK_BEES);
 		map.put(TreeFeatures.CRIMSON_FUNGUS_PLANTED.location(), () -> DenseTreeFeatures.DENSE_CRIMSON_FUNGUS_PLANTED);
 		map.put(TreeFeatures.WARPED_FUNGUS_PLANTED.location(), () -> DenseTreeFeatures.DENSE_WARPED_FUNGUS_PLANTED);
+
+		map.put(TreeFeatures.PALE_OAK.location(), () -> DenseTreeFeatures.DENSE_DARK_OAK);
+		map.put(TreeFeatures.PALE_OAK_BONEMEAL.location(), () -> DenseTreeFeatures.DENSE_DARK_OAK);
+		map.put(TreeFeatures.PALE_OAK_CREAKING.location(), () -> DenseTreeFeatures.DENSE_DARK_OAK);
 		return map;
 	}
 }

@@ -1,6 +1,13 @@
-// 1.21.1	2025-09-21T21:09:17.3147951	Tags for minecraft:block mod id densetrees
+// 1.21.4	2025-09-21T23:30:36.4313686	Tags for minecraft:block mod id densetrees
+0e357fd78f23e8b16104e7a2998783cc8ebd236a data/minecraft/tags/block/acacia_logs.json
+4d6b4399799f04632286918e125c33c597bef8ae data/minecraft/tags/block/birch_logs.json
+36aa77d50b557dc8f0caec1541b91618afe3cfea data/minecraft/tags/block/cherry_logs.json
 f2a36aac79e289771660d7b69a8dd3e18cf4fb96 data/minecraft/tags/block/crimson_stems.json
-b2355e6a1c7995ab8c56c031df1b47602f7e66eb data/minecraft/tags/block/logs.json
-b2355e6a1c7995ab8c56c031df1b47602f7e66eb data/minecraft/tags/block/logs_that_burn.json
-b2355e6a1c7995ab8c56c031df1b47602f7e66eb data/minecraft/tags/block/mineable/axe.json
+bbca2e90790af7983c378bf619a9e4325a762dba data/minecraft/tags/block/dark_oak_logs.json
+59dbd9754490292fa4b6978436791db5bda0cb34 data/minecraft/tags/block/jungle_logs.json
+3d2f1304aceee9b237665450dc1161b36fae2c47 data/minecraft/tags/block/mangrove_logs.json
+79b672a1013dfa712429d1af7188365fc29c6ac6 data/minecraft/tags/block/mineable/axe.json
+aa7ae8153797e805a769a213f7498e5d9fe6ef44 data/minecraft/tags/block/oak_logs.json
+e4d334a47df5f87040a14b5601b10771d3071185 data/minecraft/tags/block/pale_oak_logs.json
+3736bd3218f9110c9e19b5dced582742bbd1e4d4 data/minecraft/tags/block/spruce_logs.json
 8ada91c8dfcf8ad0924fe6e194e6f388ca0430b9 data/minecraft/tags/block/warped_stems.json

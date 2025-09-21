@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "densetrees:dense_acacia_log"
-    }
+    "#": "densetrees:dense_acacia_log"
   },
   "pattern": [
     "##",
