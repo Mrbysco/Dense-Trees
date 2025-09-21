@@ -9,11 +9,14 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 import java.util.List;
 import java.util.Set;
@@ -35,11 +38,24 @@ public class DenseLootProvider extends LootTableProvider {
 
 		@Override
 		protected void generate() {
-			for (DeferredHolder<Block, ? extends Block> deferredHolder : DenseRegistry.BLOCKS.getEntries()) {
-				if (deferredHolder.get() instanceof RotatedPillarBlock)
-					this.dropSelf(deferredHolder.get());
-			}
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_OAK_LOG, Blocks.OAK_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_SPRUCE_LOG, Blocks.SPRUCE_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_BIRCH_LOG, Blocks.BIRCH_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_JUNGLE_LOG, Blocks.JUNGLE_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_ACACIA_LOG, Blocks.ACACIA_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_DARK_OAK_LOG, Blocks.DARK_OAK_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_MANGROVE_LOG, Blocks.MANGROVE_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_CHERRY_LOG, Blocks.CHERRY_LOG);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_CRIMSON_STEM, Blocks.CRIMSON_STEM);
+			dropLogsWithSilkTouch(DenseRegistry.DENSE_WARPED_STEM, Blocks.WARPED_STEM);
+		}
 
+		private void dropLogsWithSilkTouch(DeferredBlock<? extends Block> denseLog, Block regularLog) {
+			this.add(denseLog.get(), (block) ->
+					createSilkTouchDispatchTable(block,
+							LootItem.lootTableItem(regularLog)
+									.apply(SetItemCountFunction.setCount(ConstantValue.exactly(16.0F)))
+					));
 		}
 
 		@Override

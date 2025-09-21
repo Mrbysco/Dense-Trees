@@ -15,6 +15,8 @@
   "densetrees.configuration.General.tooltip": "General Settings",
   "densetrees.configuration.biomeBlacklist": "Biome Blacklist",
   "densetrees.configuration.biomeBlacklist.tooltip": "Blacklist biomes from spawning dense trees. (Use the registry name of the biome) Example: \"minecraft:flower_forest\"",
+  "densetrees.configuration.disableWorldgen": "Disable Worldgen",
+  "densetrees.configuration.disableWorldgen.tooltip": "Setting this to true will disable dense tree world generation",
   "densetrees.configuration.enableSaplingToDenseTree": "Enable Sapling to Dense Tree",
   "densetrees.configuration.enableSaplingToDenseTree.tooltip": "Setting this to true will allow saplings to turn into dense trees",
   "densetrees.configuration.saplingToDenseTreeChance": "Sapling to Dense Tree Chance",
