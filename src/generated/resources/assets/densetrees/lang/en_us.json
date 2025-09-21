@@ -8,5 +8,15 @@
   "block.densetrees.dense_mangrove_log": "Dense Mangrove Log",
   "block.densetrees.dense_oak_log": "Dense Oak Log",
   "block.densetrees.dense_spruce_log": "Dense Spruce Log",
-  "block.densetrees.dense_warped_stem": "Dense Warped Stem"
+  "block.densetrees.dense_warped_stem": "Dense Warped Stem",
+  "densetrees.configuration.Biome": "Biome",
+  "densetrees.configuration.Biome.tooltip": "Biome Settings",
+  "densetrees.configuration.General": "General",
+  "densetrees.configuration.General.tooltip": "General Settings",
+  "densetrees.configuration.biomeBlacklist": "Biome Blacklist",
+  "densetrees.configuration.biomeBlacklist.tooltip": "Blacklist biomes from spawning dense trees. (Use the registry name of the biome) Example: \"minecraft:flower_forest\"",
+  "densetrees.configuration.enableSaplingToDenseTree": "Enable Sapling to Dense Tree",
+  "densetrees.configuration.enableSaplingToDenseTree.tooltip": "Setting this to true will allow saplings to turn into dense trees",
+  "densetrees.configuration.saplingToDenseTreeChance": "Sapling to Dense Tree Chance",
+  "densetrees.configuration.saplingToDenseTreeChance.tooltip": "Chance of a sapling turning into a dense tree. (0.05 = 5%)"
 }

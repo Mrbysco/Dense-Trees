@@ -35,7 +35,7 @@ public class DenseConfig {
 
 			biomeBlacklist = builder
 					.comment("Blacklist biomes from spawning dense trees. (Use the registry name of the biome) Example: \"minecraft:flower_forest\"")
-					.defineListAllowEmpty(List.of("biomeBlacklist"), () -> List.of(""), o -> o instanceof String);
+					.defineListAllowEmpty("biomeBlacklist", () -> List.of(""), String::new, o -> o instanceof String);
 
 			builder.pop();
 		}

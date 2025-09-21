@@ -7,10 +7,13 @@ import com.mrbysco.densetrees.registry.DenseModifiers;
 import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.slf4j.Logger;
@@ -22,7 +25,7 @@ public class DenseTrees {
 	public static final Logger LOGGER = LogUtils.getLogger();
 	public static final String MOD_ID = "densetrees";
 
-	public DenseTrees(IEventBus eventBus, ModContainer container) {
+	public DenseTrees(IEventBus eventBus, Dist dist, ModContainer container) {
 		container.registerConfig(ModConfig.Type.COMMON, DenseConfig.commonSpec);
 		eventBus.register(DenseConfig.class);
 
@@ -33,6 +36,10 @@ public class DenseTrees {
 		DenseModifiers.BIOME_MODIFIER_SERIALIZERS.register(eventBus);
 
 		NeoForge.EVENT_BUS.register(new SaplingHandler());
+
+		if (dist.isClient()) {
+			container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+		}
 	}
 
 	private void registerCreativeTab(final BuildCreativeModeTabContentsEvent event) {
