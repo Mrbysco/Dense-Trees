@@ -7,7 +7,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -50,21 +49,21 @@ public class DenseRecipeProvider extends RecipeProvider {
 	protected void planksFromDenseLog(ItemLike planks, DeferredHolder<Block, ? extends Block> log) {
 		shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 64)
 				.requires(log.get()).group("planks").unlockedBy("has_log", has(log.get()))
-				.save(this.output, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "planks_from_" + log.getId().getPath()).toString());
+				.save(this.output, DenseTrees.modLoc("planks_from_" + log.getId().getPath()).toString());
 	}
 
 	protected void logsFromDenseLog(ItemLike log, DeferredHolder<Block, ? extends Block> denseLog) {
 		shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
-				.save(this.output, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "logs_from_" + denseLog.getId().getPath()).toString());
+				.save(this.output, DenseTrees.modLoc("logs_from_" + denseLog.getId().getPath()).toString());
 	}
 
 	protected void stemsFromDenseLog(ItemLike log, DeferredHolder<Block, ? extends Block> denseLog) {
 		shaped(RecipeCategory.BUILDING_BLOCKS, log, 64)
 				.pattern("##").pattern("##")
 				.define('#', denseLog.get()).unlockedBy("has_dense_log", has(denseLog.get()))
-				.save(this.output, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, "stems_from_" + denseLog.getId().getPath()).toString());
+				.save(this.output, DenseTrees.modLoc("stems_from_" + denseLog.getId().getPath()).toString());
 	}
 
 	public static class Runner extends RecipeProvider.Runner {

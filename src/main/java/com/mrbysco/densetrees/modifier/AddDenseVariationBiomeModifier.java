@@ -27,14 +27,14 @@ public record AddDenseVariationBiomeModifier(HolderSet<Biome> biomes, Holder<Pla
 			for (Holder<PlacedFeature> featureHolder : featureList) {
 				var foundFeature = featureHolder.unwrapKey().orElse(null);
 				var vanillaKey = original.unwrapKey().orElse(null);
-				if (foundFeature != null && vanillaKey != null && foundFeature.location().equals(vanillaKey.location())) {
+				if (foundFeature != null && vanillaKey != null && foundFeature.identifier().equals(vanillaKey.identifier())) {
 					hasOriginal = true;
 					break;
 				}
 			}
 
 			if (hasOriginal) {
-//				DenseTrees.LOGGER.debug("Adding dense tree {} to biome {}", dense.unwrapKey().orElseThrow().location(), biome.unwrapKey().orElseThrow().location());
+//				DenseTrees.LOGGER.debug("Adding dense tree {} to biome {}", dense.unwrapKey().orElseThrow().identifier(), biome.unwrapKey().orElseThrow().identifier());
 				if (isBlacklisted(biome))
 					return;
 				generationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, dense);
@@ -45,7 +45,7 @@ public record AddDenseVariationBiomeModifier(HolderSet<Biome> biomes, Holder<Pla
 	private boolean isBlacklisted(Holder<Biome> biome) {
 		var biomeKey = biome.unwrapKey().orElse(null);
 		if (biomeKey != null) {
-			return DenseConfig.COMMON.biomeBlacklist.get().contains(biomeKey.location().toString());
+			return DenseConfig.COMMON.biomeBlacklist.get().contains(biomeKey.identifier().toString());
 		}
 		return false;
 	}

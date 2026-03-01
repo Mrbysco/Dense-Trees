@@ -7,7 +7,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -63,7 +62,7 @@ public class DenseTreePlacements {
 	public static final ResourceKey<PlacedFeature> DENSE_FALLEN_JUNGLE_TREE = createPlacementKey("dense_fallen_jungle_tree");
 
 	public static ResourceKey<PlacedFeature> createPlacementKey(String key) {
-		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, key));
+		return ResourceKey.create(Registries.PLACED_FEATURE, DenseTrees.modLoc(key));
 	}
 
 	public static void bootstrap(BootstrapContext<PlacedFeature> context) {

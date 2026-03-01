@@ -12,7 +12,6 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -128,7 +127,7 @@ public class DenseTreeFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_WARPED_FUNGUS_PLANTED = createConfiguredKey("dense_warped_fungus_planted");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredKey(String key) {
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, key));
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, DenseTrees.modLoc(key));
 	}
 
 	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {

@@ -52,7 +52,7 @@ public class DenseBiomeModifiers {
 
 	private static void addDenseVariation(BootstrapContext<BiomeModifier> context, HolderGetter<PlacedFeature> placedGetter,
 	                                      HolderSet.Named<Biome> biomeSet, ResourceKey<PlacedFeature> original, ResourceKey<PlacedFeature> denseKey) {
-		final ResourceKey<BiomeModifier> denseLocation = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, denseKey.location());
+		final ResourceKey<BiomeModifier> denseLocation = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, denseKey.identifier());
 		final BiomeModifier addDenseVariationBiomeModifier = new AddDenseVariationBiomeModifier(
 				biomeSet,
 				placedGetter.getOrThrow(original),

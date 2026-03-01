@@ -8,7 +8,6 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
@@ -37,7 +36,7 @@ public class DenseVegetationFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_PALE_GARDEN_VEGETATION = createConfiguredKey("dense_pale_garden_vegetation");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredKey(String key) {
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, key));
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, DenseTrees.modLoc(key));
 	}
 
 	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {

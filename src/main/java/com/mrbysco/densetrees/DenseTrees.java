@@ -5,6 +5,7 @@ import com.mrbysco.densetrees.config.DenseConfig;
 import com.mrbysco.densetrees.handler.SaplingHandler;
 import com.mrbysco.densetrees.registry.DenseModifiers;
 import com.mrbysco.densetrees.registry.DenseRegistry;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
@@ -47,5 +48,9 @@ public class DenseTrees {
 			List<ItemStack> stacks = DenseRegistry.ITEMS.getEntries().stream().map(reg -> new ItemStack(reg.get())).toList();
 			event.acceptAll(stacks);
 		}
+	}
+
+	public static Identifier modLoc(String path) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
 }

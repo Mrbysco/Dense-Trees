@@ -8,7 +8,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -56,7 +55,7 @@ public class DensePlacedFeatures {
 	public static final ResourceKey<PlacedFeature> DENSE_WARPED_FUNGI = createPlacementKey("dense_warped_fungi");
 
 	public static ResourceKey<PlacedFeature> createPlacementKey(String key) {
-		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DenseTrees.MOD_ID, key));
+		return ResourceKey.create(Registries.PLACED_FEATURE, DenseTrees.modLoc(key));
 	}
 
 	public static void bootstrap(BootstrapContext<PlacedFeature> context) {

@@ -34,7 +34,7 @@ public class DenseLogBlock extends RotatedPillarBlock {
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
 		super.animateTick(state, level, pos, random);
 
-		if (level.isClientSide) {
+		if (level.isClientSide()) {
 			double yOffset = state.is(DenseRegistry.DENSE_MANGROVE_LOG.get()) ? -1.5D : 0;
 			level.addParticle(ParticleTypes.GLOW,
 					(double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D + yOffset, (double) pos.getZ() + 0.5D,
