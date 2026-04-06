@@ -2,9 +2,11 @@ package com.mrbysco.densetrees.world;
 
 import com.mrbysco.densetrees.DenseTrees;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
@@ -89,6 +91,8 @@ public class DenseTreePlacements {
 		PlacementUtils.register(context, DENSE_OAK_BEES_0002_LEAF_LITTER, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_OAK_BEES_0002_LEAF_LITTER), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
 		PlacementUtils.register(context, DENSE_OAK_BEES_002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_OAK_BEES_002), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
 		PlacementUtils.register(context, DENSE_BIRCH_BEES_0002_PLACED, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_BIRCH_BEES_0002), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+		Holder<ConfiguredFeature<?, ?>> birchBees0002LeafLitter = configuredGetter.getOrThrow(TreeFeatures.BIRCH_BEES_0002_LEAF_LITTER);
+		PlacementUtils.register(context, DENSE_BIRCH_BEES_0002_LEAF_LITTER, birchBees0002LeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
 		PlacementUtils.register(context, DENSE_BIRCH_BEES_002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_BIRCH_BEES_002), PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
 		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES_0002_LEAF_LITTER, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES_0002_LEAF_LITTER), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
 		PlacementUtils.register(context, DENSE_FANCY_OAK_BEES_002, configuredGetter.getOrThrow(DenseTreeFeatures.DENSE_FANCY_OAK_BEES_002), PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));

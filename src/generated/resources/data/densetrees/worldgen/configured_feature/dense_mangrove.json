@@ -1,6 +1,26 @@
 {
   "type": "minecraft:tree",
   "config": {
+    "below_trunk_provider": {
+      "type": "minecraft:rule_based_state_provider",
+      "rules": [
+        {
+          "if_true": {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_block_tag",
+              "tag": "minecraft:cannot_replace_below_tree_trunk"
+            }
+          },
+          "then": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "minecraft:dirt"
+            }
+          }
+        }
+      ]
+    },
     "decorators": [
       {
         "type": "minecraft:leave_vine",
@@ -42,12 +62,6 @@
         "probability": 0.01
       }
     ],
-    "dirt_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:dirt"
-      }
-    },
     "foliage_placer": {
       "type": "minecraft:random_spread_foliage_placer",
       "foliage_height": 2,
@@ -58,15 +72,12 @@
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:mangrove_leaves",
+        "Name": "densetrees:dense_mangrove_log",
         "Properties": {
-          "distance": "7",
-          "persistent": "false",
-          "waterlogged": "false"
+          "axis": "y"
         }
       }
     },
-    "force_dirt": false,
     "ignore_vines": true,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
@@ -140,7 +151,7 @@
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "densetrees:dense_mangrove_log",
+        "Name": "minecraft:mangrove_log",
         "Properties": {
           "axis": "y"
         }

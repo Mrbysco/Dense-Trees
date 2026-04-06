@@ -36,11 +36,7 @@ public class DenseLogBlock extends RotatedPillarBlock {
 
 		if (level.isClientSide()) {
 			double yOffset = state.is(DenseRegistry.DENSE_MANGROVE_LOG.get()) ? -1.5D : 0;
-			level.addParticle(ParticleTypes.GLOW,
-					(double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D + yOffset, (double) pos.getZ() + 0.5D,
-					(double) ((float) (level.random.nextFloat() - 0.5) * 2 + random.nextFloat()) - 0.5D,
-					(double) ((float) (level.random.nextFloat() - 0.5) * 2 - random.nextFloat() - 1.0F),
-					(double) ((float) (level.random.nextFloat() - 0.5) * 2 + random.nextFloat()) - 0.5D);
+			level.addParticle(ParticleTypes.GLOW, (double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D + yOffset, (double) pos.getZ() + 0.5D, (double) ((float) (level.getRandom().nextFloat() - 0.5) * 2 + random.nextFloat()) - 0.5D, (double) ((float) (level.getRandom().nextFloat() - 0.5) * 2 - random.nextFloat() - 1.0F), (double) ((float) (level.getRandom().nextFloat() - 0.5) * 2 + random.nextFloat()) - 0.5D);
 		}
 	}
 }
