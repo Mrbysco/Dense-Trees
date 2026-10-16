@@ -19,17 +19,17 @@ public class DenseItemTagProvider extends ItemTagsProvider {
 
 	@Override
 	public void addTags(HolderLookup.Provider lookupProvider) {
-		this.tag(ItemTags.OAK_LOGS).add(DenseRegistry.DENSE_OAK_LOG.asItem());
-		this.tag(ItemTags.SPRUCE_LOGS).add(DenseRegistry.DENSE_SPRUCE_LOG.asItem());
-		this.tag(ItemTags.BIRCH_LOGS).add(DenseRegistry.DENSE_BIRCH_LOG.asItem());
-		this.tag(ItemTags.JUNGLE_LOGS).add(DenseRegistry.DENSE_JUNGLE_LOG.asItem());
-		this.tag(ItemTags.ACACIA_LOGS).add(DenseRegistry.DENSE_ACACIA_LOG.asItem());
-		this.tag(ItemTags.DARK_OAK_LOGS).add(DenseRegistry.DENSE_DARK_OAK_LOG.asItem());
-		this.tag(ItemTags.MANGROVE_LOGS).add(DenseRegistry.DENSE_MANGROVE_LOG.asItem());
-		this.tag(ItemTags.CHERRY_LOGS).add(DenseRegistry.DENSE_CHERRY_LOG.asItem());
-		this.tag(ItemTags.PALE_OAK_LOGS).add(DenseRegistry.DENSE_PALE_OAK_LOG.asItem());
-		this.tag(ItemTags.CRIMSON_STEMS).add(DenseRegistry.DENSE_CRIMSON_STEM.asItem());
-		this.tag(ItemTags.WARPED_STEMS).add(DenseRegistry.DENSE_WARPED_STEM.asItem());
-		this.tag(ItemTags.NON_FLAMMABLE_WOOD).add(DenseRegistry.DENSE_CRIMSON_STEM.asItem(), DenseRegistry.DENSE_WARPED_STEM.asItem());
+		this.tag(ItemTags.OAK_LOGS).add(DenseRegistry.DENSE_OAK_LOG_ITEM.getKey());
+		this.tag(ItemTags.SPRUCE_LOGS).add(DenseRegistry.DENSE_SPRUCE_LOG_ITEM.getKey());
+		this.tag(ItemTags.BIRCH_LOGS).add(DenseRegistry.DENSE_BIRCH_LOG_ITEM.getKey());
+		this.tag(ItemTags.JUNGLE_LOGS).add(DenseRegistry.DENSE_JUNGLE_LOG_ITEM.getKey());
+		this.tag(ItemTags.ACACIA_LOGS).add(DenseRegistry.DENSE_ACACIA_LOG_ITEM.getKey());
+		this.tag(ItemTags.DARK_OAK_LOGS).add(DenseRegistry.DENSE_DARK_OAK_LOG_ITEM.getKey());
+		this.tag(ItemTags.MANGROVE_LOGS).add(DenseRegistry.DENSE_MANGROVE_LOG_ITEM.getKey());
+		this.tag(ItemTags.CHERRY_LOGS).add(DenseRegistry.DENSE_CHERRY_LOG_ITEM.getKey());
+		this.tag(ItemTags.PALE_OAK_LOGS).add(DenseRegistry.DENSE_PALE_OAK_LOG_ITEM.getKey());
+		this.tag(ItemTags.CRIMSON_STEMS).add(DenseRegistry.DENSE_CRIMSON_STEM_ITEM.getKey());
+		this.tag(ItemTags.WARPED_STEMS).add(DenseRegistry.DENSE_WARPED_STEM_ITEM.getKey());
+		this.tag(ItemTags.NON_FLAMMABLE_WOOD).add(DenseRegistry.DENSE_CRIMSON_STEM_ITEM.getKey(), DenseRegistry.DENSE_WARPED_STEM_ITEM.getKey());
 	}
 }

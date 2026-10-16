@@ -4,6 +4,7 @@ import com.mrbysco.densetrees.DenseTrees;
 import com.mrbysco.densetrees.registry.DenseRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
@@ -16,21 +17,21 @@ public class DenseBlockTagProvider extends BlockTagsProvider {
 
 	@Override
 	public void addTags(HolderLookup.Provider lookupProvider) {
-		this.tag(BlockTags.OAK_LOGS).add(DenseRegistry.DENSE_OAK_LOG.get());
-		this.tag(BlockTags.SPRUCE_LOGS).add(DenseRegistry.DENSE_SPRUCE_LOG.get());
-		this.tag(BlockTags.BIRCH_LOGS).add(DenseRegistry.DENSE_BIRCH_LOG.get());
-		this.tag(BlockTags.JUNGLE_LOGS).add(DenseRegistry.DENSE_JUNGLE_LOG.get());
-		this.tag(BlockTags.ACACIA_LOGS).add(DenseRegistry.DENSE_ACACIA_LOG.get());
-		this.tag(BlockTags.DARK_OAK_LOGS).add(DenseRegistry.DENSE_DARK_OAK_LOG.get());
-		this.tag(BlockTags.MANGROVE_LOGS).add(DenseRegistry.DENSE_MANGROVE_LOG.get());
-		this.tag(BlockTags.CHERRY_LOGS).add(DenseRegistry.DENSE_CHERRY_LOG.get());
-		this.tag(BlockTags.PALE_OAK_LOGS).add(DenseRegistry.DENSE_PALE_OAK_LOG.get());
-		this.tag(BlockTags.CRIMSON_STEMS).add(DenseRegistry.DENSE_CRIMSON_STEM.get());
-		this.tag(BlockTags.WARPED_STEMS).add(DenseRegistry.DENSE_WARPED_STEM.get());
-		this.tag(BlockTags.MINEABLE_WITH_AXE).add(DenseRegistry.DENSE_OAK_LOG.get(), DenseRegistry.DENSE_SPRUCE_LOG.get(),
-				DenseRegistry.DENSE_BIRCH_LOG.get(), DenseRegistry.DENSE_JUNGLE_LOG.get(),
-				DenseRegistry.DENSE_ACACIA_LOG.get(), DenseRegistry.DENSE_DARK_OAK_LOG.get(),
-				DenseRegistry.DENSE_MANGROVE_LOG.get(), DenseRegistry.DENSE_CHERRY_LOG.get(),
-				DenseRegistry.DENSE_PALE_OAK_LOG.get());
+		this.tag(BlockItemTags.OAK_LOGS.block()).add(DenseRegistry.DENSE_OAK_LOG.getKey());
+		this.tag(BlockItemTags.SPRUCE_LOGS.block()).add(DenseRegistry.DENSE_SPRUCE_LOG.getKey());
+		this.tag(BlockItemTags.BIRCH_LOGS.block()).add(DenseRegistry.DENSE_BIRCH_LOG.getKey());
+		this.tag(BlockTags.JUNGLE_LOGS).add(DenseRegistry.DENSE_JUNGLE_LOG.getKey());
+		this.tag(BlockItemTags.ACACIA_LOGS.block()).add(DenseRegistry.DENSE_ACACIA_LOG.getKey());
+		this.tag(BlockItemTags.DARK_OAK_LOGS.block()).add(DenseRegistry.DENSE_DARK_OAK_LOG.getKey());
+		this.tag(BlockItemTags.MANGROVE_LOGS.block()).add(DenseRegistry.DENSE_MANGROVE_LOG.getKey());
+		this.tag(BlockItemTags.CHERRY_LOGS.block()).add(DenseRegistry.DENSE_CHERRY_LOG.getKey());
+		this.tag(BlockItemTags.PALE_OAK_LOGS.block()).add(DenseRegistry.DENSE_PALE_OAK_LOG.getKey());
+		this.tag(BlockItemTags.CRIMSON_STEMS.block()).add(DenseRegistry.DENSE_CRIMSON_STEM.getKey());
+		this.tag(BlockItemTags.WARPED_STEMS.block()).add(DenseRegistry.DENSE_WARPED_STEM.getKey());
+		this.tag(BlockTags.MINEABLE_WITH_AXE).add(DenseRegistry.DENSE_OAK_LOG.getKey(), DenseRegistry.DENSE_SPRUCE_LOG.getKey(),
+				DenseRegistry.DENSE_BIRCH_LOG.getKey(), DenseRegistry.DENSE_JUNGLE_LOG.getKey(),
+				DenseRegistry.DENSE_ACACIA_LOG.getKey(), DenseRegistry.DENSE_DARK_OAK_LOG.getKey(),
+				DenseRegistry.DENSE_MANGROVE_LOG.getKey(), DenseRegistry.DENSE_CHERRY_LOG.getKey(),
+				DenseRegistry.DENSE_PALE_OAK_LOG.getKey());
 	}
 }
